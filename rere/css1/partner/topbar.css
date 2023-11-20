@@ -1,0 +1,126 @@
+.topbar {
+  position: sticky;
+  top: 0;
+  left: 0;
+  padding-block: 14px;
+  background-color: #ffffff;
+  box-shadow: 2px 2px 20px rgba(8, 15, 52, 0.0823529412);
+}
+.topbar__container {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  justify-content: space-between;
+}
+.topbar__left {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.topbar__title {
+  font-size: 18px;
+  font-weight: 600;
+}
+.topbar__search {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+}
+.topbar__search label {
+  position: absolute;
+  top: 50%;
+  left: 18px;
+  translate: 0 -50%;
+}
+.topbar__search label img {
+  display: block;
+  width: 20px;
+}
+.topbar__search input {
+  display: block;
+  padding: 14px 18px 14px 56px;
+  width: 100%;
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  border: 1px solid #e9e9e9;
+  border-radius: 10px;
+  box-shadow: 2px 2px 20px rgba(8, 15, 52, 0.0823529412);
+}
+.topbar__search input::-moz-placeholder {
+  color: #8d8d91;
+  opacity: 1;
+}
+.topbar__search input::placeholder {
+  color: #8d8d91;
+  opacity: 1;
+}
+.topbar__right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.topbar__notification {
+  text-decoration: none;
+}
+.topbar__notification img {
+  display: block;
+  width: 24px;
+}
+.topbar__profile {
+  position: relative;
+}
+.topbar__profile-toggler {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #000000;
+}
+.topbar__profile-img {
+  display: block;
+  width: 40px;
+  margin-right: 8px;
+}
+.topbar__profile-name {
+  font-size: 14px;
+  margin-right: 12px;
+}
+.topbar__profile-dropdown-img {
+  display: block;
+  width: 14px;
+}
+.topbar__profile-menu-list {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  display: none;
+  flex-direction: column;
+  gap: 16px;
+  width: 202px;
+  padding: 24px;
+  background-color: #ffffff;
+  border: 1px solid #e9e9e9;
+  border-radius: 14px;
+  box-shadow: 2px 2px 20px rgba(8, 15, 52, 0.0823529412);
+}
+.topbar__profile-menu-list_show {
+  display: flex;
+}
+.topbar__profile-menu-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #000000;
+  font-size: 14px;
+  text-decoration: none;
+}
+.topbar__profile-menu-link img {
+  display: block;
+  width: 18px;
+}
+.topbar__profile-menu-divider {
+  width: 100%;
+  margin-block: 4px;
+  border: none;
+  border-top: 1px solid #e9e9e9;
+}

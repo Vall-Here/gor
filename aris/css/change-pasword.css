@@ -1,0 +1,39 @@
+  .changepasword-form {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 400px;
+    margin: 50px auto;
+  }
+  .changepasword-input[type="password"], .changepasword-button[type="submit"] {
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    padding: 10px 15px;
+    margin: 10px 0;
+    width: 100%;
+  }
+  .changepasword-input[type="password"] {
+    background-color: #f2f2f2;
+  }
+  .changepasword-button[type="submit"] {
+    background-color: #FF5108;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .changepasword-button[type="submit"]:hover {
+    background-color: #FF5108;
+  }
+  .changepasword-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-align: center;
+    margin-top: 0;
+  }
+  .changepasword-p{
+    text-align: center;
+    margin-top: 10px;
+  }

@@ -1,0 +1,1 @@
+const topbar=e=>{e.addEventListener("click",(()=>{e.nextElementSibling.classList.toggle("topbar__profile-menu-list_show")}))};topbar(document.querySelector(".topbar__profile-toggler"));

@@ -1,0 +1,70 @@
+.h1 {
+    font-size: 35px;
+    font-weight: 600 bold;
+    text-align: center;
+}
+
+.gambar1 {
+    position: relative;
+    overflow: hidden;
+    border-radius: 30px;
+}
+
+.gambar1 img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.gambar1:hover img {
+    transform: scale(1.1);
+}
+
+.deskrip {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.deskrip h2 {
+    position: relative;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    font-size: 24px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.linedes {
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.linedes h2 {
+    font-size: 18px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.linedes p {
+    margin-bottom: 10px;
+}
+
+.view-all-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #e2562b;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    align-items: center;
+}
+
+.view-all-btn:hover {
+    background-color: #555;
+}

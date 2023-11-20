@@ -1,0 +1,1 @@
+<?php require_once __DIR__.'/../logics/config/global.php';$_SESSION['logged_in']=true;$_SESSION['id']=1;$_SESSION['name']='User One';$_SESSION['photo']='shafy/img/profiles/user-1.png';

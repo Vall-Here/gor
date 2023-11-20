@@ -1,0 +1,187 @@
+
+.all {
+    width: 100%;
+    height: 800px;
+    /* background-color: aqua  ; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ikbar.container1{
+    /* margin: auto; */
+    margin-top: 50px;
+    margin-left: 50px;
+    margin-bottom: 5%;
+    display: flex;
+    width: 1050px;
+    height: 560px;
+    background-color: #000000;
+    align-items: center;
+    justify-content: center;
+    /* overflow: auto; */
+    overflow: hidden;
+    font-family: 'Roboto', sans-serif;
+    border-radius: 20px;
+    animation: shadowChange 2s infinite alternate;
+}
+@keyframes shadowChange {
+    0% {
+        box-shadow: 2px 1px 10px rgba(255, 0, 0, 0.5);
+    }
+    50% {
+        box-shadow: 2px 1px 10px rgba(0, 255, 0, 0.5);
+    }
+    100% {
+        box-shadow: 2px 1px 10px rgba(0, 0, 255, 0.5);
+    }
+}
+.ikbar .left{
+    float: left;
+    width: 45%;
+    height: 100%;
+    background-color: white;
+}
+.ikbar .right{
+    /* float: left; */
+    width: 55%;
+    height: 100%;
+    /* background-color: orangered; */
+    padding-top: 170px;
+    display: flex;
+    /* justify-content: last baseline; */
+    justify-content: end;
+    /* align-items: last baseline; */
+    flex-direction: column;
+}
+/* .ikbar .left2{
+    /* background-image: url(../../ikbar/img/basketball.jpg); */
+    /* background-size:cover;  */
+    /* background-repeat: no-repeat; */
+    /* float: left; */
+    /* width: 35%; */
+    /* height: 100%; */
+    /* overflow: visible; */
+/* } */ 
+.ikbar .right img {
+    /* width: 158%; */
+    width: 578px;
+    /* height: 554px; */
+    /* height: 100%; */
+    /* height:55px; */
+    /* z-index: 2; */
+    position: absolute;
+    height: 100%;
+}
+.ikbar .left h1{
+    font-size: 30px;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 100px;
+    z-index: -1;
+    margin-bottom: 30px;
+}
+.input {
+    width: 80%;
+    height: 10%;
+    background-color: white;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+    margin-bottom: 19.5px;
+    box-shadow: 2px 2px 20px rgb(32, 141, 188);
+}
+input {
+    border-color: transparent;
+    outline: none;
+    height: 50px;
+}
+.transborder {
+    border: 0px solid transparent;
+    padding: 10px;
+    width: 100%;
+}
+.img-inbody {
+    margin-left: 18px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.ikbar .left form label{
+    font-weight: bold;
+    /* height: 40px; */
+    display: inline-block;
+    margin-left: 5px;
+}
+.ikbar .left .left_text{
+    margin-top: 23px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+}
+.ikbar .left .left_text a{
+    margin-left: 5px;
+}
+.ikbar .right h1{
+    font-weight: bold;
+    text-align: center;
+    /* font-size: 30px; */
+    color: black;
+    z-index: 2;
+}
+.submit {
+    width: 400px;
+    height: 43px;
+    background-color:  orangered;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    border-radius: 14px;
+    margin-top: 30px;
+    margin-bottom: 40px;
+    padding: 10px 20px;
+}
+.submit2 {
+    width: 400px;
+    height: 43px;
+    background-color:  orangered;
+    text-align: center;
+    /* margin-left: auto; */
+    /* margin-right: auto; */
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    border-radius: 14px;
+    margin-top: 50px;
+    margin-bottom: 15px;
+    padding: 10px 20px;
+    margin-left: 30%;
+}
+.submit-button {
+    background-color:  orangered;
+    margin-left: auto;
+    margin-right: auto;
+    border: 0px solid transparent;
+    width: 200px;
+    height: 43px;
+    border-radius: 14px;
+    font-family: nunito;
+    font-size: 18px;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    z-index: 1;
+}
+.submit-button a {
+    text-decoration: none;
+    font-size: 20px;
+    color: #fff;
+}

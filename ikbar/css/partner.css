@@ -1,0 +1,58 @@
+.upside {
+    overflow: auto;
+    margin-left: 50px;
+    display: flex;
+    margin-bottom: 30px;
+}
+.upside img {
+    width: 35px;
+    height: 35px;
+}
+.upside b {
+    font-size: 20px;
+    margin-left: 20px;
+}
+.downside {
+    width: 900px;
+    height: 400px;
+    margin-left: 50px;
+    margin-bottom: 50px;
+    background-color: white; 
+    margin-left: auto;
+    margin-right: auto; 
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border-radius: 14px;
+    margin-bottom: 40px;
+    margin-top: 40px;
+    vertical-align: middle;
+    box-shadow: 0px 4px 4px black;
+}
+#password {
+    width: 95%;
+    margin-left: 20px;
+    height: 30px;
+    border-radius: 40px;
+}
+#email {
+    width: 95%;
+    margin-left: 20px;
+    height: 30px;
+    border-radius: 40px;
+}
+.downside label {
+    margin-left: 20px;
+    margin-top: 20px;
+}
+.forsubmit {
+    align-self: flex-end;
+    margin-top: 40px;
+    margin-right: 60px;
+    background-color: orangered;
+    border: 0 solid;
+    width: 150px;
+    height: 30px;
+    border-radius: 40px;
+    cursor: pointer;
+}

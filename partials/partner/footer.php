@@ -1,0 +1,1 @@
+<div class="content__footer">Copyright © 2023 SportEase. All Rights Reserved | Designed by <a href="#">Group Five</a></div>

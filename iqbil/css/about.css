@@ -1,0 +1,99 @@
+.about .first {
+    padding-block: 70px;
+}
+
+.about .first h1 {
+    font-size: 48px;
+}
+
+.about .f1 {
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+}
+
+.about .head_devloper {
+    text-align: center;
+    padding-top: 50px;
+}
+
+.about .head_devloper h2 {
+    font-size: 32px;
+}
+
+.about .devloper {
+    padding-top: 50px;
+    display: flex;
+    flex-flow: wrap;
+    justify-content: center;
+    gap: 26px;
+}
+
+.about .img {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    padding-block: 50px;
+}
+
+.about .img img {
+    display: block;
+    width: 100%;
+}
+
+.about .dev_img {
+    width: 400px;
+    box-shadow: 2px 2px 20px rgba(8, 15, 52, .6);
+    border-radius: 24px;
+}
+
+.about .dev_img h3 {
+    font-size: 28px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.about .dev_img a {
+    display: block;
+    text-decoration: none;
+}
+
+.about .dev_img a img {
+    display: block;
+    height: 237px;
+    width: 100%;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 24px 24px 0 0;
+}
+
+.about .dev_img h3 {
+    padding-top: 20px;
+}
+
+.about .dev_img h3,
+.about .dev_img p {
+    padding-inline: 20px;
+}
+
+.about .contact {
+    padding: 20px;
+}
+
+.about .item {
+    display: flex;
+    padding-bottom: 5px;
+}
+
+.about .item img {
+    width: 30px;
+}
+
+.about .item a {
+    padding-left: 5px;
+    padding-top: 3px;
+}
+
+.about .item p {
+    padding-left: 5px;
+    padding-top: 3px;
+}

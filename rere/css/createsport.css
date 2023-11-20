@@ -1,0 +1,74 @@
+* {
+    box-sizing: border-box;
+}
+
+.form {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 1em;
+    background: #f9f9f9;
+    border: 1px solid #c1c1c1;
+}
+
+h3 {
+    margin: 0;
+    text-align: center;
+    font-size: 30px;
+    /* font-family: fantasy; */
+    font-variant: inherit;
+}
+
+input:focus,
+textarea:focus {
+    outline: 3px solid gold;
+}
+
+input,
+textarea,
+button {
+    width: 100%;
+    border: 1px solid #000;
+}
+
+.form > * {
+    padding: 1em;
+}
+
+form label {
+    display: block;
+}
+
+form p {
+    margin: 0;
+    grid-column: 1 / 2;
+    font-family: georgia;
+    font-size: x-large;
+}
+
+button,
+input,
+textarea {
+    padding: 1em;
+}
+
+button {
+    background: lightgrey;
+    width: 100%;
+    border: 0;
+}
+button:hover,
+button:focus {
+    background: rgb(247, 164, 116);
+    outline: 0;
+}
+
+form {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-gap: 20px;
+}
+
+.input-file-form {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+}

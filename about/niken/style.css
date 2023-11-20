@@ -1,0 +1,15 @@
+body {
+    background-image: url("space.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+h1 {
+    font-family: slab serif;
+    color: #f0e8e8;
+}
+td {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: #f7f4f4;
+}

@@ -1,0 +1,578 @@
+.mainContent {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+}
+
+.kotakRent{
+    width: 1250px;
+    height: 70px;
+    background-color: white;
+    margin-top: 50px;
+    border-radius: 10px;
+    box-shadow: 7px 8px 23px -6px rgba(0,0,0,0.69);
+    -webkit-box-shadow: 7px 8px 23px -6px rgba(0,0,0,0.69);
+    -moz-box-shadow: 7px 8px 23px -6px rgba(0,0,0,0.69);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.kotakRent span{
+    font: 28px verdana black;
+    margin-left: 40px;
+}
+
+.kotakRent .back{
+    height: 50px;
+    width: 100px;
+    background-color: orangered;
+    margin-right: 4%;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.kotakRent .back a {
+    text-decoration: none;
+    color: black;
+}
+
+.semua{
+    margin: 50px 0 50px 0;
+    display: flex;
+    align-items:center ;
+    flex-direction: column;
+    justify-content: center;  
+    width: 1250px;
+    /* height: 600px; */
+    border-radius: 10px;
+    box-shadow: 7px 8px 23px -6px rgba(0,0,0,0.69);
+    -webkit-box-shadow: 7px 8px 23px -6px rgba(0,0,0,0.69);
+    -moz-box-shadow: 7px 8px 23px -6px rgba(0,0,0,0.69);
+}
+
+.RentContainer {
+    margin: 50px;
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.kiri{
+    border-radius: 10px;
+    width: 250px;
+    height: 550px;
+    background-color: white;
+    box-shadow: 8px 8px 23px -6px rgba(0,0,0,0.69);
+    -webkit-box-shadow: 8px 8px 23px -6px rgba(0,0,0,0.69);
+    -moz-box-shadow: 8px 8px 23px -6px rgba(0,0,0,0.69);
+    margin-left: 35px;
+}
+
+.kiriProfile{
+    border-radius: 10px;
+    width: 250px;
+    height: 500px;
+    background-color: white;
+    box-shadow: 8px 8px 23px -6px rgba(0,0,0,0.69);
+    -webkit-box-shadow: 8px 8px 23px -6px rgba(0,0,0,0.69);
+    -moz-box-shadow: 8px 8px 23px -6px rgba(0,0,0,0.69);
+    margin-left: 35px;
+}
+
+.kanan{
+    border-radius: 10px;
+    background-color: white;
+    width: 750px;
+    height: 550px;
+    margin-left: 100px;
+    padding-top: 10px;
+    box-shadow: 8px 8px 23px -6px rgba(0,0,0,0.69);
+    -webkit-box-shadow: 8px 8px 23px -6px rgba(0,0,0,0.69);
+    -moz-box-shadow: 8px 8px 23px -6px rgba(0,0,0,0.69);
+}
+
+.kananProfile{
+    border-radius: 10px;
+    background-color: white;
+    width: 750px;
+    height: 500px;
+    margin-left: 100px;
+    padding-top: 10px;
+    box-shadow: 8px 8px 23px -6px rgba(0,0,0,0.69);
+    -webkit-box-shadow: 8px 8px 23px -6px rgba(0,0,0,0.69);
+    -moz-box-shadow: 8px 8px 23px -6px rgba(0,0,0,0.69);
+}
+
+
+.menuIcon{
+    height: 200px;
+    width: 200px;
+    border-radius: 10px;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.menuIcon form {
+    width: 200px;
+}
+
+.menu{
+    box-shadow: 8px 8px 5px -6px rgba(0,0,0,0.26);
+    -webkit-box-shadow: 8px 8px 5px -6px rgba(0,0,0,0.26);
+    -moz-box-shadow: 8px 8px 5px -6px rgba(0,0,0,0.26);
+    height: 30px;
+    margin: 6px 0 5px 0;
+    width: 90%;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.menu button {
+    border: none;
+    background-color: transparent;
+}
+.menu button:hover {
+    cursor: pointer;
+}
+#user_details {
+    margin-top: 5%;
+}
+#user_details input[type="radio"] {
+    width:3% ;
+}
+#user_details input[type="text"] {
+    width:100% ;
+}
+#user_details input[type="date"] {
+    width:100% ;
+}
+#user_details input[type="tel"] {
+    width:100% ;
+}
+#user_details input[type="radio"] {
+    width:20px ;
+    height: 20px;
+}
+
+input[type="file"]{
+    margin-left: 180px;
+    border: none;
+    outline: none;
+    background: none;
+}
+
+.userInfo .home{
+    background-color: white;
+    height: 40px;
+    width: 40px;
+    margin-top: 20px;
+    margin-right: 160px;
+    border-radius: 5px;
+    box-shadow: 8px 8px 5px -6px rgba(0,0,0,0.26);
+    -webkit-box-shadow: 8px 8px 5px -6px rgba(0,0,0,0.26);
+    -moz-box-shadow: 8px 8px 5px -6px rgba(0,0,0,0.26);
+}
+
+.userInfo .home ion-icon {
+    font-size: 35px;
+    text-decoration: none;
+    color: black;
+}
+
+.kanan .update{
+    display: flex;
+    align-items: center;
+    justify-content: center ;
+    height: 40px;
+    width: 100px;
+    background-color: #D77D00;
+    border-radius: 5px;
+    margin-left: 70%;
+    
+}
+
+.kanan .update a {
+    font-size: 20px;
+    text-decoration: none;
+    color: white;
+}
+
+.kanan .update button {
+    border: none;
+    background-color: transparent;
+    color: #fff;
+}
+
+#rent_information {
+    margin: 50px;
+    display: flex;
+} 
+    
+
+.userRent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+} 
+
+.huruf{
+    font-size: 25px;
+    font-family: verdana;
+    color: black;
+}
+
+p{
+    font-family: Verdana;
+    font-size: 20px;
+    color: black;
+}
+
+.cardBox{
+    background-color: white;
+    height: 450px;
+    width: 1200px;
+    border-radius: 10px;
+    margin: 50px 0 50px 0;
+    padding: 2%;
+    border: 2px solid black;
+    box-shadow: 8px 8px 5px -6px rgba(0,0,0,0.26);
+    -webkit-box-shadow: 8px 8px 5px -6px rgba(0,0,0,0.26);
+    -moz-box-shadow: 8px 8px 5px -6px rgba(0,0,0,0.26);
+}
+
+.cardIsi {  
+    display: grid;
+    grid-template-columns: 1.8fr 1fr 1fr 1fr;
+    grid-template-rows: 0.9fr 1fr 1fr;
+    grid-auto-columns: 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "foto jam status n"
+      "foto hari CETAK n"
+      "foto harga Cancel n";
+    height: 65%;
+}
+  
+.foto { 
+    grid-area: foto; 
+    display: flex;
+    align-items: center;
+    justify-content: center ;
+    /* background-color:blue ; */
+    flex-direction: column;
+}
+
+.JamPesanan { 
+    grid-area: jam; 
+    width: 80%;
+    height: 58%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center ;
+    margin-left: 5%;
+    margin-top: 5%;
+    border-radius: 10px;
+    font: 16px verdana;
+    box-shadow: 8px 8px 5px -6px rgba(0,0,0,0.26);
+    -webkit-box-shadow: 8px 8px 5px -6px rgba(0,0,0,0.26);
+    -moz-box-shadow: 8px 8px 5px -6px rgba(0,0,0,0.26);
+}
+
+.hari { 
+    grid-area: hari; 
+    width: 80%;
+    height: 58%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center ;
+    margin-left: 5%;
+    margin-top: 5%;
+    border-radius: 10px;
+    font: 16px verdana;
+    box-shadow: 8px 8px 5px -6px rgba(0,0,0,0.26);
+    -webkit-box-shadow: 8px 8px 5px -6px rgba(0,0,0,0.26);
+    -moz-box-shadow: 8px 8px 5px -6px rgba(0,0,0,0.26);
+}
+
+.harga { grid-area: harga; 
+    width: 80%;
+    height: 58%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center ;
+    margin-left: 5%;
+    margin-top: 5%;
+    border-radius: 10px;
+    font: 16px verdana;
+    box-shadow: 8px 8px 5px -6px rgba(0,0,0,0.26);
+    -webkit-box-shadow: 8px 8px 5px -6px rgba(0,0,0,0.26);
+    -moz-box-shadow: 8px 8px 5px -6px rgba(0,0,0,0.26);
+}
+
+.status { 
+    grid-area: status; 
+    width: 80%;
+    height: 58%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    margin-left: 5%;
+    margin-top: 5%;
+    border-radius: 10px;
+    font: 16px verdana;
+    box-shadow: 8px 8px 5px -6px rgba(0,0,0,0.26);
+    -webkit-box-shadow: 8px 8px 5px -6px rgba(0,0,0,0.26);
+    -moz-box-shadow: 8px 8px 5px -6px rgba(0,0,0,0.26);
+}
+
+.CETAK { 
+    grid-area: CETAK; 
+    width: 80%;
+    height: 58%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: orangered;
+    margin-left: 5%;
+    margin-top: 5%;
+    border-radius: 10px;
+    font: 16px verdana;
+    box-shadow: 8px 8px 5px -6px rgba(0,0,0,0.26);
+    -webkit-box-shadow: 8px 8px 5px -6px rgba(0,0,0,0.26);
+    -moz-box-shadow: 8px 8px 5px -6px rgba(0,0,0,0.26);
+}
+
+.Cancel { 
+    grid-area: Cancel; 
+    width: 80%;
+    height: 58%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: orangered;
+    margin-left: 5%;
+    margin-top: 5%;
+    border-radius: 10px;
+    box-shadow: 8px 8px 5px -6px rgba(0,0,0,0.26);
+    -webkit-box-shadow: 8px 8px 5px -6px rgba(0,0,0,0.26);
+    -moz-box-shadow: 8px 8px 5px -6px rgba(0,0,0,0.26);
+}
+.Cancel button a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.CETAK button{
+    padding: 1px 6px;
+    font: 16px verdana;
+    background-color: transparent;
+    border: none;
+
+}
+
+.Cancel button{
+    padding: 1px 6px;
+    font: 16px verdana;
+    background-color:transparent;
+    border: none;
+}
+
+.n { 
+    grid-area: n; 
+}
+
+.tulisanBawah {
+    display: flex;
+    justify-content: space-between;
+    font: 16px verdana;
+}
+
+.tulisanBawah .acc {
+    margin-right: 4%;
+    width: 300px;
+    height: 40px;
+    background-color: white;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 2px solid orangered;
+}
+
+.foto span{
+    font: 22px verdana;
+}
+
+.foto img{
+    border-radius: 10px;
+}
+
+.kotakFavorite{
+    width: 1250px;
+    height: 70px;
+    background-color: white;
+    margin-top: 50px;
+    border-radius: 10px;
+    box-shadow: 7px 8px 23px -6px rgba(0,0,0,0.69);
+    -webkit-box-shadow: 7px 8px 23px -6px rgba(0,0,0,0.69);
+    -moz-box-shadow: 7px 8px 23px -6px rgba(0,0,0,0.69);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.kontenF{
+    margin: 50px 0 50px 0;
+
+    width: 1250px;
+    /* height: 600px; */
+    border-radius: 10px;
+    box-shadow: 7px 8px 23px -6px rgba(0,0,0,0.69);
+    -webkit-box-shadow: 7px 8px 23px -6px rgba(0,0,0,0.69);
+    -moz-box-shadow: 7px 8px 23px -6px rgba(0,0,0,0.69);
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    row-gap: 40px;
+    padding: 3%;
+    position: relative;
+
+}
+
+.cardBoxF{
+    display: flex   ;
+    flex-direction: column;
+    background-color: white;
+    height: 300px;
+    width: 90%;
+    border-radius: 10px;
+    padding: 2%;
+    border: 2px solid black;
+    box-shadow: 8px 8px 5px -6px rgba(0,0,0,0.26);
+    -webkit-box-shadow: 8px 8px 5px -6px rgba(0,0,0,0.26);
+    -moz-box-shadow: 8px 8px 5px -6px rgba(0,0,0,0.26);
+    /* justify-content: center;
+    align-items: center;
+    display: flex; */
+
+}
+
+.cardGrid {
+    /* width: 100%; */
+    height: 100%;
+    padding: 50px 20px 0 30px;
+    background-color: #16a085;
+    grid-area: cardGrid;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+}
+
+.cardLink {
+    margin-top: 5%;
+    width: 100%;
+    height: 50px;
+    background-color: orangered;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 0;
+    border-radius: 10px;
+}
+
+.kontenF a{
+    font: 16px verdana;
+    text-decoration: none;
+    color: white;
+}
+
+.cardBoxF .lap{
+    height: 220px;
+    width: 245px;
+    border-radius: 10px;
+}
+
+.cardBoxF .fav{
+    height:45px;
+    width: 45px;  
+    position: absolute;
+    z-index: 12;
+
+}
+.cardBoxF .fav img{
+    height:45px;
+    width: 45px;    
+}
+
+.formACC {
+    display: flex;
+    flex-direction: column;
+}
+
+.formACC {
+    width: 90%;
+    /* margin: 10px 0 50px 30px ; */
+    padding: 20px;
+    /* border: 1px solid #ccc; */
+    /* border-radius: 10px; */
+}
+
+.formACC div {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+
+.formACC label {
+    display: block;
+    margin-bottom: 10px;
+    font: 20px verdana;
+}
+
+.formACC input[type="text"],
+.formACC input[type="date"]{
+    display: block;
+    width: 400px;
+    margin: 20px 0 20px 150px;
+    padding: 10px ;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.formACC input[type="text"] {
+    margin-left: 175px;
+}
+
+.form label {
+    color: #fff;
+    font-family: Verdana;
+}
+
+.formACC .button {
+    width: 130px;
+    height: 40px;
+    border-radius: 10px;
+    margin: 114px 8px 5px 0px;
+    border: none;
+    background-color: orangered;
+    color: black;
+    
+}

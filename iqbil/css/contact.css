@@ -1,0 +1,90 @@
+.getin {
+    display: flex;
+    justify-content: space-around;
+    padding-block: 20px;
+}
+
+.getin .kiri {
+    padding-bottom: 20px;
+    padding-inline: 20px;
+}
+
+.getin .kiri h1 {
+    font-size: 48px;
+}
+
+.getin .get {
+    width: fit-content;
+    display: flex;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+    margin-top: 50px;
+    padding-block: 10px;
+    border-radius: 12px;
+    padding-inline: 10px;
+    gap: 5px;
+}
+
+.getin .img {
+    width: 50px;
+    height: 50px;
+}
+
+.getin .kanan {
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+    padding-inline: 20px;
+    padding-block: 10px;
+    width: 700px;
+    border-radius: 12px;
+}
+
+.getin .form {
+    display: flex;
+    flex-direction: column;
+}
+
+.getin .grup {
+    display: flex;
+    gap: 70px;
+    padding-bottom: 15px;
+}
+
+.getin .grup div {
+    width: 100%;
+}
+
+.getin .form label {
+    display: block;
+}
+
+.getin .form input {
+    background-color: #f6f6f6;
+    box-shadow: 0 4px 4px 0 #000000;
+    border: none;
+    height: 70px;
+    width: 100%;
+    border-radius: 12px;
+}
+
+.getin .form textarea {
+    background-color: #f6f6f6;
+    box-shadow: 0 4px 4px 0 #000000;
+    border: none;
+    height: 100px;
+    width: 100%;
+    border-radius: 12px;
+}
+
+.getin .bawah {
+    padding-block: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.getin .button {
+    background-color: orangered;
+    border: none;
+    padding: 15px 20px;
+    border-radius: 12px;
+    color: white;
+}

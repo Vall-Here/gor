@@ -1,0 +1,32 @@
+h1 {
+    color: red;
+    font-size: 36px;
+  }
+.box {
+    position: absolute;
+    width: 200px;
+    height: 100px;
+    border: 2px solid rgb(16, 182, 91);
+    background-color: rgb(88, 126, 156);
+} 
+.box2 {
+    position: absolute;
+    width: 300px;
+    height: 150px;
+    border: 4px solid firebrick;
+    background-color: darkgreen;
+    box-shadow: rgba(8, 15, 6);
+}
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+}
+
+.foto {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}

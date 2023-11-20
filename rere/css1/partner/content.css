@@ -1,0 +1,19 @@
+.content__container {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  min-height: 100vh;
+}
+.content__main {
+  padding-block: 48px 64px;
+}
+.content__footer {
+  padding-block: 24px;
+  color: #8d8d91;
+  font-size: 14px;
+  text-align: center;
+  border-top: 1px solid #e9e9e9;
+}
+.content__footer a {
+  color: #ff5108;
+  text-decoration: none;
+}

@@ -1,0 +1,144 @@
+/* content  */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#user_information {
+    margin: 50px;
+    margin-inline: auto;
+    display: flex;
+}
+
+.userInfo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+#username {
+    font-family: Nunito ;
+    font-size: 1.3em;
+
+}
+#user_image {
+    /* float: left; */
+    /* margin: 2.5%; */
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 3px solid gray;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-bottom: 20px;
+    margin-top: 35px;
+    /*border-radius: 50px;*/
+}
+
+#user_details {
+    /* float: left; */
+    margin: 20px;
+    padding-left: 5%;
+    text-transform: uppercase;
+    font-size: 15px;
+    /* font-style: normal; */
+    font-family: "Nunito";
+    width: 90%;
+}
+
+#user_details input {
+    /* width: 100%; */
+    font-size: 1.3em;
+    font-weight: 200px;
+    margin-bottom: 3%;
+    border: none;
+    border-bottom: 1px solid darkgray;
+    display: flex;
+}
+#user_controls {
+    /*margin: 50px;*/
+    /* float: left; */
+    width: 90%;
+    margin: 5%;
+    margin-top: 3%;
+    margin-inline: auto;
+    text-align: right;
+}
+
+/* #user_information * {
+    margin: 2%;
+} */
+#user_controls button {
+    background-color: #176655;
+    color: white;
+    height: 30px;
+    border-radius: 4px;
+    outline: none;
+    border: 0px solid white;
+    width: 61%;
+    margin: 0px 2%;
+    letter-spacing: 5px;
+    padding: 5px 0px;
+    text-transform: uppercase;
+    box-shadow: 1px 1px 2px 2px rgba(17, 66, 55, 0.4),
+        -1px -1px 2px 2px rgba(17, 66, 55, 0.4);
+}
+
+#user_information table {
+    border: none;
+    width: 90%;
+    font-family: "Nunito";
+    text-transform: uppercase;
+    font-size: medium;
+    letter-spacing: 1px;
+    /* border-bottom: 0.5px solid gray; */
+}
+#user_information tr {
+    padding: auto;
+    margin: auto;
+    justify-content: center;
+}
+#user_information td {
+    display: flex;
+    padding: 5px 5px;
+    /* text-align: center; */
+    border-radius: 4px;
+    font-family: "Nunito";
+}
+#user_information td input {
+    font-family: "Nunito";
+    font-size: 15px;
+}
+.icon {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.icon a p {
+    margin-right: 20px;
+}
+
+.icon a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: black;
+    margin-left: 30px;
+    font-size: 20px;
+}
+
+
+
+.radioManageProfile span {
+    color: black;
+    font-family: verdana;
+    margin:0 20px 0 10px;
+}
+
+form div {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
