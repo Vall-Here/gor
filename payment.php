@@ -72,13 +72,7 @@ if (isset($_POST['submit'])){
             </select>
             <!-- <input type="text" value="<?=$row_user['username']?>" readonly> -->
             </div>
-            <!-- <div class="payment__select-box-group"><span>Pembayaran</span>
-                <div class="payment__select-box">
-                    <<label><input type="checkbox"> 09.00 - 12.00 WIB <img alt="Checked" src="./shafy/img/icons/check-full-primary.png"></label> 
-                    <label><input type="checkbox"> 12.30 - 14.30 WIB <img alt="Checked" src="./shafy/img/icons/check-full-primary.png"></label> 
-                    <label><input type="checkbox"> 15.00 - 18.00 WIB <img alt="Checked" src="./shafy/img/icons/check-full-primary.png"></label> 
-                    <label><input type="checkbox"> 18.30 - 21.00 WIB <img alt="Checked" src="./shafy/img/icons/check-full-primary.png"></label>  -->
-                <!-- </div> -->
+
             </div>
         </div>
         <div class="payment__list" data-animated>

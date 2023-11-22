@@ -4,7 +4,6 @@ require_once __DIR__ . '/config/connection.php';
 
 // Pastikan Anda memiliki nilai yang sesuai untuk $id_transaksi, $user_id, dan $field_id
 
-
 if (!isset($_SESSION['logged_in'])) {
     header('Location: ./login.php');
     exit;
@@ -95,17 +94,50 @@ require_once __DIR__ . '/partials/navbar.php';
                         </div>
                     </div>
                     <hr width="90%" align="center">
-                    <br >
+                    <br>
                 `;
 
                 formContainer.innerHTML += formulir;
+            }
+
+            // Tambahkan event listener untuk setiap radio button
+            for (var i = 0; i < jumlahLapangan; i++) {
+                var rentTimeRadios = document.getElementsByName(`rent_time[${i}]`);
+
+                rentTimeRadios.forEach(function (radio) {
+                    radio.addEventListener("change", function () {
+                            var rentDate = document.getElementById(`rent-date-${i}`).value;
+                            var lapangan = document.getElementById(`lapangan-${i}`).value;
+                            var waktuSewa = radio.value;
+
+                            fetch('check_availability.php', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/x-www-form-urlencoded',
+                            },
+                            body: 'rent_date=' + rentDate + '&lapangan=' + lapangan + '&waktu_sewa=' + waktuSewa,
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            // Lakukan sesuatu berdasarkan respons dari server
+                            if (data.available) {
+                                console.log('Waktu sewa tersedia.');
+                            } else {
+                                console.log('Waktu sewa sudah terisi.');
+                                // Tambahkan logika di sini untuk men-disable radio button atau memberikan pesan peringatan
+                            }
+                        })
+                        .catch((error) => {
+                            console.error('Error:', error);
+                        });
+                    });
+                });
             }
         }
 
         // Tambahkan event listener untuk tombol tambahFormulir
         tambahFormulirButton.addEventListener("click", tambahFormulir);
     });
-    
 </script>
 
 <?php require_once __DIR__ . '/partials/footer.php'; ?>

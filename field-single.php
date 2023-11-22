@@ -179,7 +179,7 @@ while($order = mysqli_fetch_array($select_orders)){
         </div>
     </div>
     <div class="button-container" data-animated>
-    <?php if ($row['kondisi_status'] == "ditutup"): ?>
+    <?php if ($row['kondisi_status'] == "ditutup" || $row['kondisi_status'] == "diperbaiki"): ?>
         <a class="btn" onclick="alert('Lapangan sedang ditutup, tidak bisa menyewa');">Sewa</a>
     <?php else: ?>
         <a onclick="return confirm('apakah anda ingin sewa?')" href="payment.php?field_id=<?=$id?>" class="btn">Sewa</a>

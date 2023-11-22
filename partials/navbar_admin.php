@@ -14,7 +14,7 @@ require "./config/connection.php"
   </head>
   <body>
     <div class="navbar">
-      <div class="container navbar__container">
+      <div class="container navbar__container" style="margin-left: 20%;">
         <a class="navbar__brand"href="./index.php">
           <img alt="SportEase"src="./shafy/img/sportease.png">
         </a>

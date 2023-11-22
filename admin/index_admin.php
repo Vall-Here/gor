@@ -30,7 +30,7 @@ require_once __DIR__ . '/partial/scripts.php'; ?>
 <link rel="stylesheet" href="./css/style.css">
 <main>
   <div class="container hero" data-animated
-  style="max-width: 1500px;"
+  style="max-width: 1200px;"
   >
     <div class="hero__left">
       <h1 class="hero__title">Rent our fields and conquer the game</h1>
@@ -44,128 +44,6 @@ require_once __DIR__ . '/partial/scripts.php'; ?>
           src="..//shafy/img/heros/hero-4.png"></div>
     </div>
   </div>
-  <!-- <form action="./fields.php" class="container filter" data-animated>
-    <div class="filter__search"><label for="search"><img alt="Search"
-          src="./shafy/img/icons/magnifier-gray.png"></label> <input id="search" name="search" type="search"
-        placeholder="Search for fields"> <button type="submit">Search</button></div>
-    <div class="filter__list">
-      <div class="filter__item"><label for="location"><img alt="Location"
-            src="./shafy/img/icons/location-gray.png"></label> <select id="location" name="location">
-          <option value="" disabled selected>Location</option>
-          <?php foreach ($cities as $city): ?>//
-            <option value="<?= $city['id'] ?>"><?= $city['name'] ?></option>
-          <?php endforeach; ?>
-        </select></div>
-      <div class="filter__item"><label for="category"><img alt="Category"
-            src="./shafy/img/icons/grid-8-gray.png"></label> <select id="category" name="category">
-          <option value="" disabled selected>Category</option>
-          <?php foreach ($categories as $category): ?>
-            <option value="<?= $category['id'] ?>"><?= $category['name'] ?></option>
-          <?php endforeach; ?>
-        </select></div>
-      <div class="filter__item"><label for="time"><img alt="Time" src="./shafy/img/icons/clock-gray.png"></label> <input
-          id="time" name="time" type="date"></div>
-    </div>
-  </form> -->
-  <!-- <div class="container featured-fields">
-    <div class="featured-fields__header" data-animated>
-      <h2>Ongoing Booking </h2><a href="../../fields.php">all ongoing </a>
-    </div>
-    <div class="featured-fields__body">
-      <?php for ($i = 0; $i < 2; $i++): ?>
-        <div class="featured-fields__card" data-animated>
-          <div class="featured-fields__card-left"><img alt="" src="data:image/jpeg;base64,<?php echo base64_encode($fields[$i]['photo']) ?>"
-              class="featured-fields__card-img"> <button class="featured-fields__card-favorite"
-              data-field-id="<?= $fields[$i]['id'] ?>"><img alt="Favorite" src="../shafy/img/icons/heart-black.png"> <img
-                alt="Favorite" src="../shafy/img/icons/heart-solid-primary.png"></button></div>
-          <div class="featured-fields__card-right">
-            <div class="featured-fields__card-top">
-
-              <p class="featured-fields__card-price">Rp
-                <?= number_format($fields[$i]['price'], 0, ',', '.') ?>
-              </p>
-            </div>
-            <h3 class="featured-fields__card-name"><a
-                href="../field-single.php?id=<?= $fields[$i]['id'] ?>"><?= $fields[$i]['name'] ?></a></h3>
-            <p class="featured-fields__card-description">
-              <?= $fields[$i]['description'] ?>
-            </p>
-            <hr>
-            <div class="featured-fields__card-feature-list">
-              <div class="featured-fields__card-feature-item"><img alt="Category" src="../shafy/img/icons/grid-8-gray.png">
-                <span>
-                  <?= $fields[$i]['category']['name'] ?>
-                </span></div>
-              <div class="featured-fields__card-feature-item"><img alt="Size" src="../shafy/img/icons/crop-gray.png">
-                <span>
-                  <?= $fields[$i]['size'] ?>Meters
-                </span></div>
-              <div class="featured-fields__card-feature-item"><img alt="Lamp" src="../shafy/img/icons/lamp-gray.png">
-                <?php
-                    $id_buatStatus =  $fields[$i]['status_id'];
-                    $statusTable = mysqli_query($conn,"SELECT * FROM status WHERE id_status = $id_buatStatus");
-                    $rows_status = mysqli_fetch_assoc($statusTable);
-                ?> 
-                <span>
-                <?=$rows_status['kondisi_status']?>
-                </span></div>
-            </div>
-          </div>
-        </div>
-      <?php endfor; ?>
-    </div>
-  </div> -->
-  <!-- <div class="container fields" id ="container-fields">
-    <div class="fields__header" data-animated>
-      <h2>Fields Menu</h2><a href="adminFieldUpdater.php">Mulai Manage</a>
-    </div>
-    <div class="fields_ctr_body">
-
-      <div class="fields_body">
-          <div class="fields__card" data-animated>
-            <div class="fields__card-top"><img alt="" src="data:image/jpeg;base64,<?php echo base64_encode($fields[$i]['photo']) ?>" class="fields__card-img"> </div>
-            <div class="fields__card-body">
-              <p class="fields__card-price">Manage Fields Category</p>
-              <p class="fields__card-name">Tambah, Hapus dan Edit semua kategori fields di web anda </p>
-    
-              <hr>
-              <div class="fields__card-feature-list">
-                <div class="fields__card-feature-link"><a href="./adminCatUpdater.php">Go</a><ion-icon name="arrow-forward-circle-outline"></ion-icon> </div>
-              </div>
-            </div>
-          </div>
-      </div>
-
-      <div class="fields_body">
-          <div class="fields__card" data-animated>
-            <div class="fields__card-top"><img alt="" src="data:image/jpeg;base64,<?php echo base64_encode($fields[$i]['photo']) ?>" class="fields__card-img"> </div>
-            <div class="fields__card-body">
-              <p class="fields__card-price">Manage Fields Category</p>
-              <p class="fields__card-name">Tambah, Hapus dan Edit semua kategori fields di web anda </p>
-    
-              <hr>
-              <div class="fields__card-feature-list">
-                <div class="fields__card-feature-link"><a href="./adminCatUpdater.php">Go</a><ion-icon name="arrow-forward-circle-outline"></ion-icon> </div>
-              </div>
-            </div>
-          </div>
-      </div>
-      <div class="fields_body">
-          <div class="fields__card" data-animated>
-            <div class="fields__card-top"><img alt="" src="data:image/jpeg;base64,<?php echo base64_encode($fields[$i]['photo']) ?>" class="fields__card-img"> </div>
-            <div class="fields__card-body">
-              <p class="fields__card-price">Manage Fields Category</p>
-              <p class="fields__card-name">Tambah, Hapus dan Edit semua kategori fields di web anda </p>
-    
-              <hr>
-              <div class="fields__card-feature-list">
-                <div class="fields__card-feature-link"><a href="./adminCatUpdater.php">Go</a><ion-icon name="arrow-forward-circle-outline"></ion-icon> </div>
-              </div>
-            </div>
-          </div>
-      </div>
-    </div> 
-  </div> -->
   
   <div class="promotion">
     <div class="container promotion__container" data-animated>

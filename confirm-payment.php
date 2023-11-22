@@ -31,14 +31,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Generate token
-    $token = bin2hex(random_bytes(4));
+    
 
     // Lakukan loop untuk setiap formulir
     for ($i = 0; $i < $jumlah_lapangan; $i++) {
         $rent_date = $rent_dates[$i];
         $lapangan_id = $lapangans[$i];
         $rent_time =$rent_times[$i];
-        $tokens = $token[$i];
+        $token = bin2hex(random_bytes(4));
     
         // Ambil harga dari tabel fields berdasarkan lapangan_id
         $harga_result = mysqli_query($conn, "SELECT price FROM fields WHERE id = $lapangan_id");
@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
             // Lakukan operasi SQL INSERT untuk setiap formulir
             $sql = "INSERT INTO orders (id_transaksi, user_id, field_id, price, tanggal_sewa, waktu_sewa, token, admin_status) 
-                VALUES ($id_transaksi, $user_id, $lapangan_id, $price, '$rent_date', '$rent_time', '$tokens', 'PENDING')";
+                VALUES ($id_transaksi, $user_id, $lapangan_id, $price, '$rent_date', '$rent_time', '$token', 'PENDING')";
             mysqli_query($conn, $sql);
         } else {
             // Handle kesalahan jika query tidak berhasil

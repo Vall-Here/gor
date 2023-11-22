@@ -1345,7 +1345,7 @@ border-bottom: 1px solid rgba(40, 39, 39, 0.11);
   justify-content: space-between;
   padding: 32px 24px;
   margin-right:50px;
-  margin-left: 400px;
+  margin-left: 10%;
 }
 
 .navbar__brand {
