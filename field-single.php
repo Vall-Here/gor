@@ -21,6 +21,11 @@ while($order = mysqli_fetch_array($select_orders)){
 ?>
 
 <link rel="stylesheet" href="./niken/css/field-single.css" />
+<style>
+    td {
+        padding-left: 50px;
+}
+</style>
 
 <script>
     // document.addEventListener("DOMContentLoaded", function () {
@@ -155,7 +160,7 @@ while($order = mysqli_fetch_array($select_orders)){
         </div>
     </div>
     <div class="container2" data-animated>
-        <a href="sports-arena-single.php" class="button-link-share">More</a>
+        <!-- <a href="sports-arena-single.php" class="button-link-share">More</a> -->
         <a href="favorite.php" class="button-link button-link-fav">
             <span class="fav-icon">&#10084;</span>
             <span class="fav-text">Favorit</span>

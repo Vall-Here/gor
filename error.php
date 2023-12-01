@@ -22,3 +22,5 @@ require_once __DIR__ . '/partials/navbar.php';
 <!-- end content -->
 
 <?php require_once __DIR__ . '/partials/footer.php'; ?>
+
+

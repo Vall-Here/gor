@@ -6,19 +6,42 @@ require "../config/connection.php";
 require "../function.php";
 require_once __DIR__ . '/partial/sidebar.php';
 require_once __DIR__ . '/partial/scripts.php';
-// Ambil data statistik dari database
-// WHERE MONTH(tanggal) = MONTH(CURRENT_DATE())
-$query = "SELECT statistic_1_bulan.field_dipinjam, statistic_1_bulan.total_dipinjam, fields.name AS 'lapangan'
-        FROM statistic_1_bulan
-        INNER JOIN fields ON statistic_1_bulan.field_dipinjam = fields.id;";
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();}
+if( !isset($_SESSION["logged_in"]) || $_SESSION["cek"] != "admin" ) {
+    header("Location: ../login.php");
+    exit;}
+
+$start_date_default = '2000-01-01';
+$today = date('Y-m-d');
+$end_date_default = $today;
 
 
-$result = $conn->query($query);
+
+$start_date = isset($_GET['startDate']) ? $_GET['startDate'] : $start_date_default;
+$end_date = isset($_GET['endDate']) ? $_GET['endDate'] : $end_date_default;
+$date_condition = "tanggal_sewa BETWEEN '$start_date' AND '$end_date'";
+
+$result = mysqli_query($conn, 
+"SELECT 
+    orders.id as tId, 
+    orders.tanggal_sewa, 
+    COUNT(orders.field_id) as total, 
+    SUM(orders.price) as grandTotal, 
+    fields.name as namafield 
+FROM orders 
+INNER JOIN fields ON orders.field_id = fields.id 
+WHERE $date_condition 
+GROUP BY orders.field_id
+");
+
 
 $statistics = array();
-
-while ($row = $result->fetch_assoc()) {
+$totalHarga = 0;
+while ($row = mysqli_fetch_assoc($result)) {
     $statistics[] = $row;
+    $totalHarga = $totalHarga + $row['grandTotal'];
+
 }
 
 
@@ -100,28 +123,41 @@ $row_field = mysqli_fetch_assoc($field);
         background-color: orangered;
         color: #fff;
     }
+    input[type="date"] {
+            height: 40px;
+            border: none;
+            padding-left: 3%;
+            border-bottom: 1px solid black;
+            background-color: transparent;
+            color: black;
+            margin-right: 20px;
+    }
+    .chose form {
+        display: flex;
+    }
 </style>
 
 <!-- navbar end -->
 <div class="container hero" data-animated
     style="margin-inline:158px 0;
-    max-width:1890px
+    max-width:1750px
     ">
 <section class="content">
     <div class="containerHeader">
         <span>Statistic Lapangan Bulan ini</span>
         <div class="chose">
-        <label for="bulan">Pilih Bulan:</label>
-        <select id="bulan" name="bulan">
-            <option value="2023-11">November</option>
-            <option value="2023-10">oktober</option>
-            <option value="2023-09">september</option>
-        </select>
+            <label for="bulan">Pilih Bulan:</label>
+            <form action="" method="get">
+                    <label for="startDate">Tanggal Mulai:</label>
+                    <input type="date" name="startDate" id="startDate" value="<?= $start_date ?>" onchange="this.form.submit()">
+                    <label for="endDate">Tanggal Akhir:</label>
+                    <input type="date" name="endDate" id="endDate" value="<?= $end_date ?>" onchange="this.form.submit()">
+            </form>
 
-        <button id="filterButton">Tampilkan</button>
+            <!-- <button id="filterButton">Tampilkan</button> -->
         </div>
     </div>
-    <div class="containerMainRent">
+    <div class="containerMainRent" style="flex-direction: column; justify-content:center;align-items:center;">
     <table>
     <thead>
         <tr>
@@ -130,32 +166,52 @@ $row_field = mysqli_fetch_assoc($field);
         </tr>
     </thead>
     <tbody>
-        <?php foreach ($statistics as $row_stat) : ?>
+        <?php foreach ($result as $row_stat) : ?>
         <tr>
-            <td><?=$row_stat['lapangan']?></td>
-            <td><?= $row_stat['total_dipinjam']; ?></td>
+            <td><?=$row_stat['namafield']?></td>
+            <td><?= $row_stat['total']; ?></td>
         </tr>
         <?php endforeach; ?>
     </tbody>
-</table>
+    </table>
+    <br>
+    <br>
+    <table>
+    <thead>
+        <tr>
+            <th>tanggal</th>
+            <th>Total Pendapatan</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <tr>
+            <td><?=$start_date?> sampai <?=$end_date?></td>
+            <td>Rp.<?= $totalHarga?></td>
+        </tr>
+
+    </tbody>
+    </table>
+
     </div>
     <div class="containerMainRent" style="padding : 20px">
     <canvas id="statisticChart" width="300" height="100"></canvas>
     </div>
     <div class="containerMainRent" style="padding : 20px; display:flex;flex-direction:column;">
     <h1 align ='center' >User yang melakukan penyewaan</h1>
-        <div class="userrr">
+        <div class="userrr" style="display: flex; justify-content:space-between; padding:50px">
             <div class="userStat">
                 <canvas id="userStat"width="100" height="100"></canvas>
             </div>
-            <div class="userStatKet">
+            <br>
+            <div class="userStatKet" >
                 <table>
                     <tr>
                         <th>Nama User</th>
                         <th>Kelamin</th>
                     </tr>
                         <?php 
-                                $tbresult = mysqli_query($conn, "SELECT COUNT(users.id) AS total_user, username,gender FROM orders
+                                $tbresult = mysqli_query($conn, "SELECT DISTINCT orders.user_id, users.username,users.gender FROM orders
                                 INNER JOIN users ON orders.user_id = users.id");
                                 foreach($tbresult as $row_tt_user):
                         ?>
@@ -167,7 +223,7 @@ $row_field = mysqli_fetch_assoc($field);
                 </table>
             </div>
         </div>
-    <!-- <canvas id="statisticChart" width="300" height="100"></canvas> -->
+
     </div>
 </section>
 </div>
@@ -178,8 +234,8 @@ $row_field = mysqli_fetch_assoc($field);
 
 <script>
 // Data statistik untuk digunakan dalam grafik
-var labels = <?php echo json_encode(array_column($statistics, 'lapangan')); ?>;
-var data = <?php echo json_encode(array_column($statistics, 'total_dipinjam')); ?>;
+var labels = <?php echo json_encode(array_column($statistics, 'namafield')); ?>;
+var data = <?php echo json_encode(array_column($statistics, 'total')); ?>;
 
 // Buat objek grafik dengan Chart.js
 var ctx = document.getElementById('statisticChart').getContext('2d');
@@ -248,54 +304,30 @@ var statisticChart = new Chart(ctx, {
 
 
 <script>
-    // Dapatkan elemen dropdown
-var selectBulan = document.getElementById('bulan');
-
-// Dapatkan elemen tombol filter
-var filterButton = document.getElementById('filterButton');
-
-// Tambahkan event listener untuk tombol filter
-filterButton.addEventListener('click', function() {
-    var selectedBulan = selectBulan.value;
-    // Buat permintaan Ajax dengan bulan yang dipilih
-    var xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            // Respons dari server
-            var response = JSON.parse(xhr.responseText);
-            // Perbarui grafik dan tabel dengan data yang baru
-            updateStatistic(response);
+    function updateStatistic(data) {
+        // Update tabel
+        var tableBody = document.querySelector('.containerMainRent table tbody');
+        tableBody.innerHTML = '';
+        for (var i = 0; i < data.length; i++) {
+            var row = document.createElement('tr');
+            var lapanganCell = document.createElement('td');
+            var totalDipinjamCell = document.createElement('td');
+            lapanganCell.textContent = data[i].lapangan;
+            totalDipinjamCell.textContent = data[i].total_dipinjam;
+            row.appendChild(lapanganCell);
+            row.appendChild(totalDipinjamCell);
+            tableBody.appendChild(row);
         }
-    };
-    // Gantilah URL ini dengan URL yang sesuai dengan server Anda
-    xhr.open('GET', 'get_statistic.php?bulan=' + selectedBulan, true);
-    xhr.send();
-});
 
-function updateStatistic(data) {
-    // Update tabel
-    var tableBody = document.querySelector('.containerMainRent table tbody');
-    tableBody.innerHTML = '';
-    for (var i = 0; i < data.length; i++) {
-        var row = document.createElement('tr');
-        var lapanganCell = document.createElement('td');
-        var totalDipinjamCell = document.createElement('td');
-        lapanganCell.textContent = data[i].lapangan;
-        totalDipinjamCell.textContent = data[i].total_dipinjam;
-        row.appendChild(lapanganCell);
-        row.appendChild(totalDipinjamCell);
-        tableBody.appendChild(row);
+        // Update grafik
+        statisticChart.data.labels = data.map(function(item) {
+            return item.lapangan;
+        });
+        statisticChart.data.datasets[0].data = data.map(function(item) {
+            return item.total_dipinjam;
+        });
+        statisticChart.update();
     }
-
-    // Update grafik
-    statisticChart.data.labels = data.map(function(item) {
-        return item.lapangan;
-    });
-    statisticChart.data.datasets[0].data = data.map(function(item) {
-        return item.total_dipinjam;
-    });
-    statisticChart.update();
-}
 
 </script>
 

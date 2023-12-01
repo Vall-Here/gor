@@ -27,6 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             
             if( $password == $row["password"] ) {
                 $_SESSION["login"] = $email_adm;
+                $_SESSION["cek"] = 'admin';
                 $_SESSION['id'] = $id_adm;
                 $_SESSION['jbt'] = $jbt_adm;
                 $_SESSION['logged_in'] = true;
