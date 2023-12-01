@@ -25,11 +25,11 @@ $hasil2 = query("SELECT * FROM fav WHERE id_user =". $_SESSION['id']);
 
 <!-- content -->
 <div class="niken container">
-    <div class="h1">
+    <div class="h1" data-animated>
         <h1>FIELDS</h1>
     </div>
     <!-- navbar2 -->
-    <nav>
+    <nav data-animated>
         <div class="filter__search"><label for="keyword"><img alt="Search"
         src="./shafy/img/icons/magnifier-gray.png"></label> <input id="keyword" name="keyword" type="search"
         placeholder="Search for fields"> <button type="submit" name="cari" id="tombol-cari">Search</button></div>
