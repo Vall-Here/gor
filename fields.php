@@ -18,7 +18,9 @@ if (isset($_GET["category_id"])){
 $query = "SELECT id, name FROM categories";
 $hasil = mysqli_query($conn, $query);
 
-$hasil2 = query("SELECT * FROM fav WHERE id_user =". $_SESSION['id']); 
+if(isset($_SESSION['logged_in'])){
+    $hasil2 = query("SELECT * FROM fav WHERE id_user =". $_SESSION['id']); 
+}
 ?>
 
 <link rel="stylesheet" href="./niken/css/fields.css" />
