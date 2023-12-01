@@ -18,6 +18,7 @@ if (isset($_GET["category_id"])){
 $query = "SELECT id, name FROM categories";
 $hasil = mysqli_query($conn, $query);
 
+$hasil2 = query("SELECT * FROM fav WHERE id_user =". $_SESSION['id']); 
 ?>
 
 <link rel="stylesheet" href="./niken/css/fields.css" />
@@ -58,7 +59,6 @@ $hasil = mysqli_query($conn, $query);
     }
     </script>
 
-  
 
     <div id="content">
     <div class="fields container">
@@ -67,10 +67,19 @@ $hasil = mysqli_query($conn, $query);
             <div class="fields__card" data-animated>
                 <div class="fields__card-top">
                 <img src="data:image/jpeg;base64,<?php echo base64_encode($row_field['photo']); ?>" alt="" class="fields__card-img" />
-                    <button class="fields__card-favorite" onclick="gotofavoritepage()">
+                <button class="fields__card-favorite" onclick="gotofavoritepage()">
+                    <?php if (isset($_SESSION['logged_in'])): ?>
+                        <?php $favoriteFieldIds = array_column($hasil2, 'id_fields'); ?>
+                        <?php $favoriteUserIds = array_column($hasil2, 'id_users'); ?>
+                        <?php if (in_array($row_field['id'], $favoriteFieldIds) ):?>
+                            <img src="./niken/img/heart-solid-primary.png" alt="Favorite" />
+                        <?php else: ?>
+                            <img src="./niken/img/heart-black.png" alt="Favorite" />
+                        <?php endif; ?>
+                    <?php else: ?>
                         <img src="./niken/img/heart-black.png" alt="Favorite" />
-                        <img src="./niken/img/heart-solid-primary.png" alt="Favorite" />
-                    </button>
+                    <?php endif; ?>
+                </button>
                 </div>
                 <div class="fields__card-body">
                     <p class="fields__card-price">Rp. <?= $row_field['price']; ?></p>
