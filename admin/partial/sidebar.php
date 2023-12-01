@@ -46,6 +46,12 @@
                             <!-- <li class="sidebar__menu-item"><a class="sidebar__menu-link" href="./transactions-history.php">History</a></li> -->
                         </ul>
                     </li>
+                    <li class="sidebar__menu-item"><a class="sidebar__menu-link sidebar__menu-link_collapse" href="javascript:void(0)"><img alt="Dashboard" src="../shafy/img/icons/flame-black.png"> Faq  <img alt="See" src="../shafy/img/icons/chevron-right-black.png"></a>
+                        <ul class="sidebar__menu-list">
+                            <li class="sidebar__menu-item"><a class="sidebar__menu-link" href="../../gor/admin/adminStatisticRent.php">daftar Faq</a></li>
+                            <li class="sidebar__menu-item"><a class="sidebar__menu-link" href="./transactions-history.php">Daftar Faq Terjawab</a></li>
+                        </ul>
+                    </li>
                 </ul><a class="sidebar__cta" href="../../gor/logout.php">Logout<img alt="See" src="../shafy/img/icons/arrow-right-light.png"></a>
             </nav>
         </div>

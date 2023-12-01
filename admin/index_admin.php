@@ -5,21 +5,18 @@ $fields = getFields();
 $categories = getCategories();
 require_once __DIR__ . '/navbar_admin.php';
 require "../config/connection.php" ;
-if(!isset($_SESSION)) 
-{ 
-    session_start(); 
+if (session_status() == PHP_SESSION_NONE) {
+  session_start();
+}
+
+if( !isset($_SESSION["logged_in"]) || $_SESSION["cek"] != "admin" ) {
+    header("Location: ../login.php");
+    exit;
 }
    $email_adm = $_SESSION['login'];
    $adm = mysqli_query($conn,"SELECT * FROM admin WHERE email = '$email_adm'");
    $row_adm = mysqli_fetch_assoc($adm);
-// if (!isset($_SESSION['id'])){
-//   $rows_user["first_name"] = "User";
-//   session_abort();
-// }else{
-// $id = $_SESSION['id'];
-// $user = mysqli_query($conn, "SELECT * FROM users WHERE id = '$id'");
-// $rows_user = mysqli_fetch_assoc($user);
-// }
+
 ?>
 
 <?php 
@@ -46,17 +43,7 @@ require_once __DIR__ . '/partial/scripts.php'; ?>
   </div>
   
   <div class="promotion">
-    <div class="container promotion__container" data-animated>
-      <div class="promotion__left">
-        <h2 class="promotion__title">Experience the best field rental service</h2>
-        <p class="promotion__description">Lorem ipsum dolor sit amet consectetur adipiscing elit odio massa eget posuere
-          at proin lectus proin morbi euismod itae purus donec cursus neque adipiscing maecenas proin eu viverra commodo
-          felis risus at amet ornare pellentesque nulla ipsu.</p><a href="./fields.php" class="promotion__button"
-          data-animated>Explore fields</a>
-      </div>
-      <div class="promotion__right"><img alt="Promotion" src="..//shafy/img/promotions/promotion-1.png"
-          class="promotion__img"> <img alt="Promotion" src="..//shafy/img/promotions/promotion-2.png"
-          class="promotion__img" data-animated></div>
+  <div class="containerMainRent" style="padding : 20px; margin-left:20%;width:60%">
     </div>
   </div>
   <div class="container join">

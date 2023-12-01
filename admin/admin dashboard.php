@@ -4,10 +4,17 @@ $title = 'My Profile';
 require_once __DIR__ . 'navbar_admin.php';
 require "./config/connection.php";
 
-if(!isset($_SESSION)) 
-{ 
-    session_start(); 
-}
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();}
+if( !isset($_SESSION["logged_in"]) || $_SESSION["cek"] != "admin" ) {
+    header("Location: ../login.php");
+    exit;}
+    $email_adm = $_SESSION['login'];
+    $adm = mysqli_query($conn,"SELECT * FROM admin WHERE email = '$email_adm'");
+    $row_adm = mysqli_fetch_assoc($adm);
+
+?>
+  
 $id = $_SESSION['id'];
 $user = mysqli_query($conn, "SELECT * FROM users WHERE id = '$id'");
 $rows_user = mysqli_fetch_assoc($user);

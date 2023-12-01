@@ -5,7 +5,11 @@ require_once __DIR__ . '/navbar_admin.php';
 
 require "../config/connection.php";
 require "../function.php";
-
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();}
+if( !isset($_SESSION["logged_in"]) || $_SESSION["cek"] != "admin" ) {
+    header("Location: ../login.php");
+    exit;}
 
 // if( !isset($_SESSION["login"]) || $_SESSION["login"] != "admin" ) {
 //     header("Location: ../index.php");

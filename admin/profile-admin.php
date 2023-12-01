@@ -4,6 +4,8 @@ $title = 'My Profile';
 require_once  'navbar_admin.php';
 require "../config/connection.php";
 require "../function.php";
+require_once __DIR__ . '/partial/sidebar.php';
+require_once __DIR__ . '/partial/scripts.php';
 
 if(!isset($_SESSION)) 
 { 
@@ -17,7 +19,9 @@ $row_adm = mysqli_fetch_assoc($adm);
 <link rel="stylesheet" href="../rere/css/profile.css" />
 
 <!-- content -->
-<div id="user_information" class="container">
+
+<div class="container hero" data-animated>
+    <div id="user_information" class="container">
     <div class = "userInfo" >
         <div id="user_image" style=" background-image: url('data:image/jpeg;base64,<?php echo base64_encode($row_adm['photo'])?>'); background-size: cover;)">
         </div>
@@ -60,9 +64,10 @@ $row_adm = mysqli_fetch_assoc($adm);
                     <input type="file" name="pic" accept="image/*" style="float: left" />
                 </td>
             </tr> -->
-        </table>
+                </table>
+            </div>
+        </div>
     </div>
-</div>
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 <!-- <div id="user_controls" class="container">
