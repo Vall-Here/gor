@@ -10,7 +10,7 @@ require_once __DIR__ . '/partials/navbar.php';
 <link rel="stylesheet" href="./elisa/css/register.css" />
 
 <!-- content -->
-<div class="container1 elisa">
+<div class="container1 elisa" data-animated>
     <div class="register">
         <form onsubmit="return validateForm()" method="POST" action="register.php">
             <div class="top-form">
