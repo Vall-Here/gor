@@ -25,8 +25,9 @@ if (isset($_POST["updateData"])){
         $gender = $data["kelamin"];
         $date = $data["lahir"];
         $hp = $data["nomor"];
+        $username = $fname.$lname;
 
-        mysqli_query($conn, "UPDATE users SET first_name = '$fname', last_name = '$lname', phone = '$hp', gender = '$gender', date = '$date' WHERE id = $id_user");
+        mysqli_query($conn, "UPDATE users SET first_name = '$fname', last_name = '$lname', phone = '$hp',username = '$username',gender = '$gender', date = '$date' WHERE id = $id_user");
         return mysqli_affected_rows($conn);
     }
 

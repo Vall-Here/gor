@@ -23,8 +23,15 @@ $date_condition = " AND tanggal_sewa BETWEEN '$start_date' AND '$end_date'";
 $search = isset($_GET['search']) ? $_GET['search'] : '';
 $search_condition = !empty($search) ? " AND (tanggal_sewa LIKE '%$search%' OR admin_status LIKE '%$search%' OR price LIKE '%$search%' OR waktu_sewa LIKE '%$search%' OR token LIKE '%$search%')" : '';
 
+$results_per_page = isset($_GET['rowsPerPage']) ? (int)$_GET['rowsPerPage'] : 10;
+$result_count = mysqli_query($conn, "SELECT COUNT(*) as total FROM orders INNER JOIN users ON orders.user_id = users.id WHERE 1 $search_condition $date_condition");
+$row_count = mysqli_fetch_assoc($result_count);
+$total_pages = ceil($row_count['total'] / $results_per_page);
+$current_page = isset($_GET['page']) ? $_GET['page'] : 1; 
+$start_index = ($current_page - 1) * $results_per_page;
 
-$orders = "SELECT * FROM orders WHERE 1 $search_condition $date_condition";
+
+$orders = "SELECT * FROM orders WHERE 1 $search_condition $date_condition LIMIT $start_index, $results_per_page";
 $result = $conn->query($orders);
 
 ?>
@@ -84,6 +91,25 @@ $result = $conn->query($orders);
     .containerHeader input[type="text"] {
         margin-right: 40px;
     }
+    .pagination {
+            display: flex;
+            list-style: none;
+            padding: 0;
+        }
+
+        .pagination a {
+            padding: 8px 16px;
+            text-decoration: none;
+            color: black;
+            background-color: #f1f1f1;
+            margin: 0 4px;
+            border-radius: 5px;
+        }
+
+        .pagination a.active {
+            background-color: #354c7c;
+            color: white;
+        }
 </style>
 
 <!-- navbar end -->
@@ -103,7 +129,7 @@ $result = $conn->query($orders);
                 <input type="date" name="endDate" id="endDate" value="<?= $end_date ?>" onchange="this.form.submit()">
             </form>
         </div>
-        <div class="containerMainRent">
+        <div class="containerMainRent" style="flex-direction: column; align-items:center">
 
             <table>
                 <tr>
@@ -156,6 +182,21 @@ $result = $conn->query($orders);
                 }
                 ?>
             </table>
+        
+            <div class="pagination">
+            <?php if ($current_page > 1) : ?>
+                <a href="?page=<?= $current_page - 1 ?>&search=<?= $search ?>&rowsPerPage=<?= $results_per_page ?>&startDate=<?= $start_date ?>&endDate=<?= $end_date ?>">&laquo; Previous</a>
+            <?php endif; ?>
+
+            <?php for ($page = 1; $page <= $total_pages; $page++) : ?>
+                <a href="?page=<?= $page ?>&search=<?= $search ?>&rowsPerPage=<?= $results_per_page ?>&startDate=<?= $start_date ?>&endDate=<?= $end_date ?>" <?= $page == $current_page ? 'class="active"' : '' ?>><?= $page ?></a>
+            <?php endfor; ?>
+
+            <?php if ($current_page < $total_pages) : ?>
+                <a href="?page=<?= $current_page + 1 ?>&search=<?= $search ?>&rowsPerPage=<?= $results_per_page ?>&startDate=<?= $start_date ?>&endDate=<?= $end_date ?>">Next &raquo;</a>
+            <?php endif; ?>
+        </div>
+    
         </div>
     </section>
 </div>

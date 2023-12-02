@@ -1,18 +1,38 @@
 <?php
 $title = 'Sign Up';
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    header('Location: ./login.php');
-    exit;
-    }
+// if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+//     header('Location: ./login.php');
+//     exit;
+//     }
+require 'config/connection.php';
 require_once __DIR__ . '/partials/navbar.php';
+
+if (isset($_POST['submit'])){
+    $first = $_POST['fname'];
+    $last = $_POST['lname'];
+    $email = $_POST['email'];
+    $nohp = $_POST['nohp'];
+    $pw = $_POST['password'];
+
+    $result =  mysqli_query($conn,"INSERT INTO users(first_name,last_name,email,password,phone) VALUES ('$first','$last','$email','$pw','$nohp')");
+    
+    echo "<script>alert('Berhasil Register'); 
+    document.location.href = 'login.php'</script>";}
+
+
+
 ?>
+
+
+
+
 
 <link rel="stylesheet" href="./elisa/css/register.css" />
 
 <!-- content -->
 <div class="container1 elisa">
     <div class="register">
-        <form onsubmit="return validateForm()" method="POST" action="register.php">
+        <form onsubmit="return validateForm()" method="POST" action="">
             <div class="top-form">
                 <h1>Register Now</h1>
                 <hr />
@@ -52,7 +72,7 @@ require_once __DIR__ . '/partials/navbar.php';
             </div>
                 
             <div class="button-container1">
-                <button type="submit">SIGN UP</button>
+                <button type="submit" name="submit">SIGN UP</button>
             </div>
         </form>
     </div>
@@ -77,8 +97,7 @@ require_once __DIR__ . '/partials/navbar.php';
             alert("Please fill in all fields.");
             return false;
         }
-
-        alert("Data berhasil disimpan.");
+        alert("Data No errors.");
         return true;
     }
 </script>

@@ -266,7 +266,7 @@ var labels = ['Laki-Laki', 'Perempuan'];
 
 var ctx = document.getElementById('userStat').getContext('2d');
 var statisticChart = new Chart(ctx, {
-    type: 'pie',
+    type: 'doughnut',
     data: {
         labels: labels,
         datasets: [{
