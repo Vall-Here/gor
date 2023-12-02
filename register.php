@@ -30,7 +30,7 @@ if (isset($_POST['submit'])){
 <link rel="stylesheet" href="./elisa/css/register.css" />
 
 <!-- content -->
-<div class="container1 elisa">
+<div class="container1 elisa" data-animated>
     <div class="register">
         <form onsubmit="return validateForm()" method="POST" action="">
             <div class="top-form">

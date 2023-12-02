@@ -1,6 +1,6 @@
 <?php
 
-$title = 'Fields';
+$title = 'Category';
 require_once __DIR__ . '/partials/navbar.php';
 require "shafy\logics\config\connection.php";
 require "function.php";

@@ -18,7 +18,7 @@ $title = 'login';
 
 <body>
     <div class="logo">
-        <img src="../ikbar/img/Logo 1.svg" alt="" />
+        <a href="../index.php"><img src="../ikbar/img/Logo 1.svg" alt="" /></a>
     </div>
     <div class="body">
         <img src="../ikbar/img/Group 259.svg" alt="" class="logo2" />
