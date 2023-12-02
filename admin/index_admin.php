@@ -58,11 +58,11 @@ require_once __DIR__ . '/partial/scripts.php'; ?>
 <link rel="stylesheet" href="./css/style.css">
 <main>
   <div class="container hero" data-animated
-  style="max-width: 1200px;"
+  style="max-width: 1500px; margin-inline:300px 0"
   >
-    <div class="hero__left">
+    <div class="hero__left" >
       <h1 class="hero__title">Rent our fields and conquer the game</h1>
-      <p class="hero__subtitle" style="font-size: 25px;">Selamat Datang <?=$row_adm["jabatan"] ?></p>
+      <p class="hero__subtitle" style="font-size: 25px;">Selamat Datang Di Admin Panel : <?=$row_adm["jabatan"] ?></p>
       <a href="#container-fields" class="hero__button">Do Work</a>
     </div>
     <div class="hero__right">
@@ -73,13 +73,13 @@ require_once __DIR__ . '/partial/scripts.php'; ?>
     </div>
   </div>
   
-  <div class="promotion">
-    <div class="containerMainRent" style="padding : 20px; margin-left:20%;width:60%;flex-direction:column">
+  <div class="promotion" style=" margin-inline:300px 0">
+    <div class="containerMainRent" style="margin-left:5%;width:90%;flex-direction:column;padding:30px">
           <h1>Perkembangan Gor</h1>
-          <canvas id="monthlyRevenueChart" width="300" height="100"></canvas>
+          <canvas id="monthlyRevenueChart" width="300" he ight="100"></canvas>
       </div>
   </div>
-  <div class="container join">
+  <div class="container join" style=" margin-inline:300px 0; padding-top:10px">
     <div class="join__card join__card_partner" data-animated>
       <h2 class="join__title">List Subscriber </h2>
       <p class="join__description"></p><a href="./partner/login.php" class="join__button join__button_primary" data-animated>Subscriber</a>
@@ -99,7 +99,8 @@ var ctx = document.getElementById('monthlyRevenueChart').getContext('2d');
 var monthlyRevenueChart = new Chart(ctx, {
     type: 'line',
     data: {
-        labels: <?= json_encode($labels); ?>,
+        // labels: <?= json_encode($labels); ?>,
+        labels: ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct','nov', 'dec'],
         datasets: [{
             label: 'Total Pendapatan Per Bulan',
             data: <?= json_encode($data); ?>,

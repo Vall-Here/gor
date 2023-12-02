@@ -155,9 +155,9 @@ body {
 
 .container {
   margin-inline: auto;
-  max-width: 1318px;
+  /* max-width: 1318px; */
   padding-inline: 1.5rem;
-  width: 100%
+  /* width: 100% */
 }
 
 .container_partner {

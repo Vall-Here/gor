@@ -29,7 +29,7 @@ require_once __DIR__ . '/partial/scripts.php';
     }
     </script>
     <div class="container hero" data-animated
-    style="margin-inline:158px 0;
+    style="margin-inline:300px 0;
     max-width:1950px
     ">
     <section class="content">

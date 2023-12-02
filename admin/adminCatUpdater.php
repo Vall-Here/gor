@@ -28,7 +28,7 @@ require_once __DIR__ . '/partial/scripts.php'; ?>
     <!-- navbar end -->
 
     <div class="container hero" data-animated
-    style="margin-inline:158px 0;
+    style="margin-inline:300px 0;
     max-width:1890px
     ">
     <section class="content">
