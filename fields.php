@@ -95,7 +95,17 @@ if(isset($_SESSION['logged_in'])){
                     <div class="fields__card-feature-list">
                         <div class="fields__card-feature-item">
                             <img src="./niken/img/grid-8-gray.png" alt="Category" />
-                            <span><?= $row_field['category_id']; ?></span></span>
+                            <span><?php if($row_field['category_id'] == 1){
+                                echo "futsal";
+                            }elseif($row_field['category_id'] == 2){
+                                echo "badminton";
+                            }elseif($row_field['category_id'] == 3){
+                                echo "tennis";
+                            }elseif($row_field['category_id'] == 4){
+                                echo "basketball";
+                            }else{
+                                echo "volleyball";
+                            }; ?></span></span>
                         </div>
                         <div class="fields__card-feature-item">
                             <img src="./niken/img/crop-gray.png" alt="Size" />
