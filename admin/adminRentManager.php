@@ -88,6 +88,9 @@ $result = $conn->query($orders);
             background-color: transparent;
             color: black;
         }
+    .containerHeader input[type="text"],.containerHeader input[type="date"]:focus {
+        outline: orangered;
+    }
     .containerHeader input[type="text"] {
         margin-right: 40px;
     }

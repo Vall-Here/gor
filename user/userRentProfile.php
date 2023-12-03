@@ -56,7 +56,10 @@ $rows_order2= mysqli_fetch_assoc($orders2);
                     ?>
                     <div class="hari"><?= $displayDate?></div>
                     <div class="harga"><?= $row_orders['price']?></div>
-                    <div class="status">Status: aktif</div>
+                    <?php 
+                    $todayDay = date('Y-m-d');
+                    ?>
+                    <div class="status">Status: <?php echo ($databaseDate > $todayDay) ? 'Ongoing' : 'Kadaluarsa'; ?></div>
                     <div class="CETAK"><button>CETAK</button></div>
                     <div class="Cancel"><button 
                     onclick="return confirm('yakin ingin meng cancel penyewaan?')"

@@ -21,6 +21,13 @@ if(isset($_POST['update'])){
     $sql = "UPDATE users SET password=$password WHERE id='$id'";
     $result = (mysqli_query($conn, $sql));
 }
+if(isset($_POST['delete']))
+{
+    // $password = $_POST['password'];
+
+    $sql = "DELETE FROM users WHERE id='$id'";
+    $result = (mysqli_query($conn, $sql));
+}
 
 ?>
 
@@ -53,10 +60,9 @@ if(isset($_POST['update'])){
                         </div>
                         <div>
                         <button class="button" name="update" value="update"><span>SAVE</span></button> 
-                        <button class="button" name="delete" value="reset"><span>DELETE</span></button>    
+                        <button class="button" name="delete" value="reset" onclick="return confirm('Apakah Anda yakin')"><span>DELETE</span></button>    
                         </div>
-              </form>
-                
+                </form>
             </div>
         </div>
     </div>
