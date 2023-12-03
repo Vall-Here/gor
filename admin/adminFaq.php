@@ -12,27 +12,37 @@ if (!isset($_SESSION["logged_in"]) || $_SESSION["cek"] != "admin") {
     header("Location: ../login.php");
     exit;
 }
+if(isset($_GET['id']) && isset($_POST['jawaban'])) {
+    $id_faq = $_GET['id'];
+    $jawaban = $_POST['jawaban'];
+
+    $updateQuery = "UPDATE faq SET jawaban = '$jawaban' WHERE id_faq = $id_faq";
+    
+    if ($conn->query($updateQuery) === TRUE) {
+        echo "Jawaban berhasil diupdate.";
+    } else {
+        echo "Error updating jawaban: " . $conn->error;
+    }
+}
 $start_date_default = '2000-01-01';
 $today = date('Y-m-d');
 $end_date_default = $today;
 
 $start_date = isset($_GET['startDate']) ? $_GET['startDate'] : $start_date_default;
 $end_date = isset($_GET['endDate']) ? $_GET['endDate'] : $end_date_default;
-$date_condition = " AND tanggal_sewa BETWEEN '$start_date' AND '$end_date'";
+$date_condition = " AND tanggal_faq BETWEEN '$start_date' AND '$end_date'";
 
-$search = isset($_GET['search']) ? $_GET['search'] : '';
-$search_condition = !empty($search) ? " AND (tanggal_sewa LIKE '%$search%' OR admin_status LIKE '%$search%' OR price LIKE '%$search%' OR waktu_sewa LIKE '%$search%' OR token LIKE '%$search%')" : '';
 
-$results_per_page = isset($_GET['rowsPerPage']) ? (int)$_GET['rowsPerPage'] : 10;
-$result_count = mysqli_query($conn, "SELECT COUNT(*) as total FROM orders INNER JOIN users ON orders.user_id = users.id WHERE 1 $search_condition $date_condition");
+$results_per_page = isset($_GET['rowsPerPage']) ? (int)$_GET['rowsPerPage'] : 5;
+$result_count = mysqli_query($conn, "SELECT COUNT(*) as total FROM faq INNER JOIN admin ON faq.id_adm = admin.id_admin WHERE 1 $date_condition");
 $row_count = mysqli_fetch_assoc($result_count);
 $total_pages = ceil($row_count['total'] / $results_per_page);
 $current_page = isset($_GET['page']) ? $_GET['page'] : 1; 
 $start_index = ($current_page - 1) * $results_per_page;
 
 
-$orders = "SELECT * FROM orders WHERE 1 $search_condition $date_condition LIMIT $start_index, $results_per_page";
-$result = $conn->query($orders);
+$faq = "SELECT * FROM faq INNER JOIN admin ON faq.id_adm = admin.id_admin WHERE 1 $date_condition LIMIT $start_index, $results_per_page";
+$result = $conn->query($faq);
 
 ?>
 
@@ -88,8 +98,8 @@ $result = $conn->query($orders);
             background-color: transparent;
             color: black;
         }
-    .containerHeader input[type="text"] {
-        margin-right: 40px;
+    .containerHeader input[type="date"]:focus{
+        outline: none;
     }
     .pagination {
             display: flex;
@@ -114,71 +124,66 @@ $result = $conn->query($orders);
 
 <!-- navbar end -->
 
-<div class="container hero" data-animated style="margin-inline:300px 0;
-    max-width:1750px
+<div class="container hero" data-animated style="margin-inline:300px 0px;
+    max-width:100%
     ">
     <section class="content">
         <div class="containerHeader" >
-            <span>Rent Manager</span>
+            <span>List Faq</span>
             <!-- <div class="btnTambahCtg"><a href="./tambahCtg.php">Tambah</a></div> -->
-            <form action="<?= $_SERVER['PHP_SELF'] ?>" method="get" style="width: 55%;">
-                <input type="text" name="search" placeholder="Cari..." value="<?= $search ?>" onchange="this.form.submit()">
+            <form action="<?= $_SERVER['PHP_SELF'] ?>" method="get" style="width: 40%;">
+
                 <label for="startDate">Tanggal Mulai:</label>
                 <input type="date" name="startDate" id="startDate" value="<?= $start_date ?>" onchange="this.form.submit()">
                 <label for="endDate">Tanggal Akhir:</label>
                 <input type="date" name="endDate" id="endDate" value="<?= $end_date ?>" onchange="this.form.submit()">
             </form>
         </div>
-        <div class="containerMainRent" style="flex-direction: column; align-items:center">
+        <div class="containerMainRent" style="flex-direction: column; align-items:center;width:95%">
 
             <table>
                 <tr>
-                    <th>ID Order</th>
-                    <th>Nama</th>
-                    <th>Field</th>
-                    <th>Harga</th>
+                    <th>No</th>
+                    <th>User</th>
+                    <th>Admin</th>
                     <th>Tanggal</th>
-                    <th>Waktu</th>
-                    <th>Token</th>
-                    <th>Admin Status</th>
-                    <th colspan="2">Operations</th>
+                    <th>Pertanyaan</th>
+                    <th>Jawaban</th>
+                    <th>Operations</th>
                 </tr>
                 <?php
                 if ($result->num_rows > 0) {
-                    foreach ($result as $row_orders) { ?>
+                    foreach ($result as $row_faq) { ?>
                         <tr>
-                            <td> <?= $row_orders["id"] ?> </td>
+                            <td> <?= $row_faq["id_faq"] ?> </td>
                             <?php
-                            $id_user = $row_orders["user_id"];
-                            $orders = "SELECT * FROM users WHERE id  = $id_user";
-                            $result = $conn->query($orders);
+                            $id_user = $row_faq["id_user"];
+                            $faq = "SELECT * FROM users WHERE id  = $id_user";
+                            $result = $conn->query($faq);
                             $rows_user = mysqli_fetch_assoc($result);
                             ?>
-
                             <td> <?= $rows_user["first_name"] ?> <?= $rows_user["last_name"] ?> </td>
-
-                            <?php
-                            $id_fields = $row_orders["field_id"];
-                            $fieldss = "SELECT * FROM fields WHERE id  = $id_fields";
-                            $resultt = $conn->query($fieldss);
-                            $rows_field = mysqli_fetch_assoc($resultt);
-                            ?>
-                            <td> <?= $rows_field["name"] ?> </td>
-                            <td> <?= $row_orders["price"] ?></td>
-                            <td> <?= $row_orders["tanggal_sewa"] ?></td>
-                            <td> <?= $row_orders["waktu_sewa"] ?></td>
-                            <td> <?= $row_orders["token"] ?></td>
-                            <td> <?= $row_orders["admin_status"] ?></td>
+                            <td> <?= $row_faq["nama_admin"] ?> </td>
+                            <td> <?= $row_faq["tanggal_faq"] ?></td>
+                            <td> <?= $row_faq["pertanyaan"] ?></td>
+                            <td style="width: 30%;"><form  method="post" action="?id=<?= $row_faq["id_faq"] ?>" onsubmit="return confirm('Anda yakin?')">
+                                <textarea style="font-size:15px;" name="jawaban" cols="40" rows="10"><?= $row_faq["jawaban"] ?></textarea>
+                                <button type="submit" name="jawab" style="background-color: #4CAF50;width:94%">
+                                    <?php echo empty($row_faq['jawaban']) ? 'Jawab' : 'Edit Jawaban'; ?>
+                                </button>
+                            </form>
+                            </td>
+                            <!-- <td><textarea style="font-size:15px ;" name="jawaban" cols="40" rows="10"><?= $row_faq["jawaban"] ?></textarea></td>
+                            <td><button name="jawab" style="background-color: #4CAF50;"><a href="?id=<?= $row_faq["id_faq"] ?>" onclick="return confirm('Anda yakin  ?')"><?php if(empty($row_faq['jawaban'])){echo 'Jawab';}else {echo 'Edit Jawaban';}?></a></button></td> -->
                             <td><button>
-                                    <a href="crud_rent/hapus_rent.php?id=<?= $row_orders['id'] ?>" onclick="return confirm('Anda yakin ingin menghapus ?')">Hapus
+                                    <a href="crud_rent/hapus_rent.php?id=<?= $row_faq['id_faq'] ?>" onclick="return confirm('Anda yakin ingin menghapus ?')">Hapus
                                     </a>
                                 </button>
                             </td>
-                            <td><button style="background-color: #4CAF50;"><a href="crud_rent/acc_rent.php?id=<?= $row_orders["id"] ?>" onclick="return confirm('Anda yakin  ?')"> Acc</a></button></td>
                         </tr>
                     <?php }; ?>
                 <?php } else {
-                    echo "Tidak ada data supplier.";
+                    echo "Tidak ada data.";
                 }
                 ?>
             </table>

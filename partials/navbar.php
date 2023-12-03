@@ -38,8 +38,14 @@ require "./config/connection.php"
                 $id_user = $_SESSION['login'];
                 $result = mysqli_query($conn, "SELECT * FROM users WHERE id = '$id_user'");
                 $row = mysqli_fetch_assoc($result);
-                ?> 
+                
+                if($row['photo'] == null){
+                ?>
+                <a class="navbar__profile"href="./profile.php"><div class="pp" style="  background-image: url(./<?=$_SESSION['photodef']?>)"></div></a>
+                <?php } else{ ?>
                 <a class="navbar__profile"href="./profile.php"><div class="pp" style="  background-image: url(data:image/jpeg;base64,<?php echo base64_encode($row['photo'])?>)"></div></a>
+                <?php }?>
+                
                 <?php endif ?>
           <?php else: ?>
                 <a class="navbar__cta"href="./login.php">Sign in</a>

@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 document.location.href = "index.php";
                 </script>';
                 // header("Location: index.php");
-                $_SESSION['photo'] =  $photo;
+                $_SESSION['photodef'] = 'shafy/img/profiles/user-def.png';
                 exit;
             }else {
                 echo '<script>alert("Password Salah!");</script>';

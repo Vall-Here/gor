@@ -139,7 +139,7 @@ $row_field = mysqli_fetch_assoc($field);
 
 <!-- navbar end -->
 <div class="container hero" data-animated
-    style="margin-inline:158px 0;
+    style="margin-inline:300px 0;
     max-width:1750px
     ">
 <section class="content">
@@ -266,7 +266,7 @@ var labels = ['Laki-Laki', 'Perempuan'];
 
 var ctx = document.getElementById('userStat').getContext('2d');
 var statisticChart = new Chart(ctx, {
-    type: 'pie',
+    type: 'doughnut',
     data: {
         labels: labels,
         datasets: [{

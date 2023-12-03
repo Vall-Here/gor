@@ -2,7 +2,7 @@
 require_once __DIR__ . '../../shafy/logics/libs/data.php';
 // $cities = getCities();
 $categories = getCategories(); ?>
-<div class="footer">
+<div class="footer" style="margin-inline: 330px 30px;">
   <div class="container">
     <div class="footer__header" data-animated>
       <div class="footer__header-left"><a href="./index.php" class="footer__brand"><img alt="SportEase"
