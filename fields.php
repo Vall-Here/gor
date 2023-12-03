@@ -69,7 +69,7 @@ if(isset($_SESSION['logged_in'])){
             <div class="fields__card" data-animated>
                 <div class="fields__card-top">
                 <img src="data:image/jpeg;base64,<?php echo base64_encode($row_field['photo']); ?>" alt="" class="fields__card-img" />
-                <button class="fields__card-favorite" onclick="gotofavoritepage()">
+                <button class="fields__card-favorite" >
                     <?php if (isset($_SESSION['logged_in'])): ?>
                         <?php $favoriteFieldIds = array_column($hasil2, 'id_fields'); ?>
                         <?php $favoriteUserIds = array_column($hasil2, 'id_users'); ?>
