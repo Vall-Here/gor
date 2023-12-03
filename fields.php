@@ -69,6 +69,7 @@ if(isset($_SESSION['logged_in'])){
             <div class="fields__card" data-animated>
                 <div class="fields__card-top">
                 <img src="data:image/jpeg;base64,<?php echo base64_encode($row_field['photo']); ?>" alt="" class="fields__card-img" />
+                <?php if (isset($_SESSION['logged_in'])): ?>
                 <form action="ikbar/config/config.php" method="post">
                 <input type="hidden" name="id" value="<?= $row_field['id'] ?>">
                     <button class="fields__card-favorite">
@@ -85,6 +86,7 @@ if(isset($_SESSION['logged_in'])){
                         <?php endif; ?>
                     </button>
                 </form>
+                <?php endif; ?>
                 </div>
                 <div class="fields__card-body">
                     <p class="fields__card-price">Rp. <?= $row_field['price']; ?></p>
