@@ -166,7 +166,7 @@ $result = $conn->query($faq);
                             <td> <?= $row_faq["nama_admin"] ?> </td>
                             <td> <?= $row_faq["tanggal_faq"] ?></td>
                             <td> <?= $row_faq["pertanyaan"] ?></td>
-                            <td style="width: 30%;><form  method="post" action="?id=<?= $row_faq["id_faq"] ?>" onsubmit="return confirm('Anda yakin?')">
+                            <td style="width: 30%;"><form  method="post" action="?id=<?= $row_faq["id_faq"] ?>" onsubmit="return confirm('Anda yakin?')">
                                 <textarea style="font-size:15px;" name="jawaban" cols="40" rows="10"><?= $row_faq["jawaban"] ?></textarea>
                                 <button type="submit" name="jawab" style="background-color: #4CAF50;width:94%">
                                     <?php echo empty($row_faq['jawaban']) ? 'Jawab' : 'Edit Jawaban'; ?>
