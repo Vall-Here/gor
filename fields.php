@@ -57,7 +57,7 @@ if(isset($_SESSION['logged_in'])){
     <script>
     function gotofavoritepage() {
         // Ganti "favorite.php" dengan URL halaman favorit yang diinginkan
-        window.location.href = "favorite.php";
+        window.location.href = "ikbar/config/config.php";
     }
     </script>
 
@@ -69,19 +69,24 @@ if(isset($_SESSION['logged_in'])){
             <div class="fields__card" data-animated>
                 <div class="fields__card-top">
                 <img src="data:image/jpeg;base64,<?php echo base64_encode($row_field['photo']); ?>" alt="" class="fields__card-img" />
-                <button class="fields__card-favorite" >
-                    <?php if (isset($_SESSION['logged_in'])): ?>
-                        <?php $favoriteFieldIds = array_column($hasil2, 'id_fields'); ?>
-                        <?php $favoriteUserIds = array_column($hasil2, 'id_users'); ?>
-                        <?php if (in_array($row_field['id'], $favoriteFieldIds) ):?>
-                            <img src="./niken/img/heart-solid-primary.png" alt="Favorite" />
+                <?php if (isset($_SESSION['logged_in'])): ?>
+                <form action="ikbar/config/config.php" method="post">
+                <input type="hidden" name="id" value="<?= $row_field['id'] ?>">
+                    <button class="fields__card-favorite">
+                        <?php if (isset($_SESSION['logged_in'])): ?>
+                            <?php $favoriteFieldIds = array_column($hasil2, 'id_fields'); ?>
+                            <?php $favoriteUserIds = array_column($hasil2, 'id_users'); ?>
+                            <?php if (in_array($row_field['id'], $favoriteFieldIds) ):?>
+                                <img src="./niken/img/heart-solid-primary.png" alt="Favorite" />
+                            <?php else: ?>
+                                <img src="./niken/img/heart-black.png" alt="Favorite" />
+                            <?php endif; ?>
                         <?php else: ?>
                             <img src="./niken/img/heart-black.png" alt="Favorite" />
                         <?php endif; ?>
-                    <?php else: ?>
-                        <img src="./niken/img/heart-black.png" alt="Favorite" />
-                    <?php endif; ?>
-                </button>
+                    </button>
+                </form>
+                <?php endif; ?>
                 </div>
                 <div class="fields__card-body">
                     <p class="fields__card-price">Rp. <?= $row_field['price']; ?></p>
