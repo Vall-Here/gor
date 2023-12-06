@@ -28,7 +28,7 @@ if(isset($_POST['delete']))
 
     $sql = "DELETE FROM users WHERE id='$id'";
     $result = (mysqli_query($conn, $sql));
-    header('Location: ../login.php');
+    header('Location: ../login.php'); 
 }
 
 ?>

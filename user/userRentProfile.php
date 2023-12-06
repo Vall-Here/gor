@@ -15,16 +15,53 @@ $orders = mysqli_query($conn, "SELECT * FROM orders
                         INNER JOIN fields ON orders.field_id = fields.id
                         WHERE user_id = '$id' ");
 
+$items_per_page = 3;
+$current_page = isset($_GET['page']) ? $_GET['page'] : 1;
+$offset = ($current_page - 1) * $items_per_page;
+$paginated_orders = mysqli_query($conn, "SELECT * FROM orders 
+                        INNER JOIN fields ON orders.field_id = fields.id
+                        WHERE user_id = '$id' LIMIT $items_per_page OFFSET $offset");
+
+$total_pages = ceil(mysqli_num_rows($orders) / $items_per_page);
 $orders2 = mysqli_query($conn, "SELECT * FROM orders where user_id = '$id'");
 $rows_order2= mysqli_fetch_assoc($orders2);
 // echo $rows_order2['id'];
 // $field = mysqli_query($conn, "SELECT * FROM fields ");
 // $row_field = mysqli_fetch_assoc($field);
 
-
-
 ?>
+<style>
+    #pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
 
+#pagination a {
+    padding: 8px 16px;
+    margin: 0 4px;
+    border: 1px solid orangered;
+    text-decoration: none;
+    color: orangered;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+#pagination a:hover {
+    background-color: orangered;
+    color: white;
+}
+
+#pagination .active {
+    background-color: #3498db;
+    color: white;
+}
+#pagination a.active {
+            background-color: orangered;
+            color: white;
+        }
+</style>
 <link rel="stylesheet" href="..//rere/css/profile.css" />
 <link rel="stylesheet" href="..//rere/userCssNew/style.css">
 
@@ -37,8 +74,8 @@ $rows_order2= mysqli_fetch_assoc($orders2);
     <div class="semua">
         <div id="" class="RentCointainer">
             <?php 
-            $counter = 0; 
-            foreach ($orders as $row_orders):
+            $counter = ($current_page - 1) * $items_per_page;
+            foreach ($paginated_orders as $row_orders):
                 ?>
             <div class=cardBox >
                 <div class="cardAtas">
@@ -72,9 +109,22 @@ $rows_order2= mysqli_fetch_assoc($orders2);
                     <div class="acc"><?= $row_orders['admin_status']?></div>
                 </div>
             </div>
-            <?php 
-                endforeach;
-                ?>
+            <?php endforeach; ?>
+            <div id="pagination">
+            
+            <?php if ($current_page > 1) : ?>
+                <a href="?page=<?= $current_page - 1 ?>">&laquo; Previous</a>
+            <?php endif; ?>
+
+            <?php for ($page = 1; $page <= $total_pages; $page++) : ?>
+                <a href="?page=<?= $page ?>" <?= $page == $current_page ? 'class="active"' : '' ?>><?= $page ?></a>
+            <?php endfor; ?>
+
+            <?php if ($current_page < $total_pages) : ?>
+                <a href="?page=<?= $current_page + 1 ?>">Next &raquo;</a>
+            <?php endif; ?>
+            
+            </div>
         </div>
     </div>
 </div>
