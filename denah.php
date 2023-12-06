@@ -4,7 +4,7 @@ $title = 'Denah Lapangan';
 require_once __DIR__ . '/partials/navbar.php';
 
 ?>
-<link rel="stylesheet" href="../aris/css/style1.css" />
+<link rel="stylesheet" href="aris/css/style1.css" />
 <style>
     .content {
         display: flex;
@@ -29,6 +29,11 @@ require_once __DIR__ . '/partials/navbar.php';
             <area shape="rect" coords="28,648,352,838" alt="tenis outdoor 2" onclick="showInfo(4)">
             <area shape="rect" coords="28,870,351,1071" alt="tenis outdoor 2" onclick="showInfo(8)">
         </map>
+</div>
+<hr>
+<div class="aris-container">
+    <img src="ikbar/img/outdoor-tenis.jpg" alt="tennis">
+    <p>Ini adalah lapangan tenis yang berada di luar atau outdoor</p>
 </div>
 
 <!-- end your content in here -->

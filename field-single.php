@@ -8,7 +8,7 @@ $id = $_GET['id'];
 $query = "SELECT * FROM fields INNER JOIN status ON fields.status_id = status.id_status WHERE id=$id";
 $select_field = mysqli_query($conn,$query);
 
-$query2 = "SELECT waktu_sewa, admin_status FROM orders WHERE field_id=$id";
+$query2 = "SELECT tanggal_sewa, waktu_sewa, admin_status FROM orders WHERE field_id=$id";
 $select_orders = mysqli_query($conn,$query2);
 
 $row = mysqli_fetch_assoc($select_field);
@@ -17,7 +17,6 @@ $orders = [];
 while($order = mysqli_fetch_array($select_orders)){
     $orders[] = $order;
 }
-
 ?>
 
 <link rel="stylesheet" href="./niken/css/field-single.css" />
@@ -117,20 +116,27 @@ while($order = mysqli_fetch_array($select_orders)){
                     <h2>Status</h2>
                 </div>
                 <hr>
-                <div class="atas-status">
-                    <p><?php echo $row['kondisi_status'] ?></p>
-                </div>
                 <?php
                 $waktuArray = ["09.00-12.00", "12.30-14.30", "15.00-18.00", "18.30-21.00"];
                 $admin = "ACC";
+                $tanggalSewa = isset($_POST['dates']) ? $_POST['dates'] : date("Y-m-d");
                 ?>
+                <div class="atas-status2"> 
+                    <form action="" method="post">
+                        <input type="date" name="dates" id="dates" value="<?=  date("Y-m-d"); ?>" onchange="this.form.submit();">
+                    </form>
+                </div>
+                <div class="atas-status">
+                    <p><?php echo $row['kondisi_status'] ?></p>
+                </div>
+                
                 <div class="atas-jadwal">
                     <?php foreach ($waktuArray as $waktu) : ?>
                         <?php $is_same = false; ?>
                         <div class="box">
                             <?php foreach ($orders as $order): ?>
                                 <?php
-                                    if ($waktu == $order['waktu_sewa'] && $admin == $order['admin_status']) {
+                                    if ($waktu == $order['waktu_sewa'] && $admin == $order['admin_status'] && $tanggalSewa == $order['tanggal_sewa']) {
                                         $is_same = true;
                                     }
                                 ?>

@@ -27,7 +27,7 @@
 .niken .info-container {
   display: flex;
   align-items: center;
-  justify-content: space-between; 
+  justify-content: space-between;
   /* text-align: center; */
   width: 100%;
   box-shadow: 5px 5px 10px rgb(0, 0, 0, 0.3);
@@ -275,10 +275,21 @@
   justify-content: center;
   border-radius: 5px;
 }
-.atas .atas-jadwal .box table td{
+.atas .atas-jadwal .box table td {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.atas .atas-status2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.atas .atas-status2 input[type="date"] {
+  width: 150px;
+  height: 40px;
+  border-radius: 20px;
 }
 area {
   cursor: pointer;
@@ -291,5 +302,4 @@ area {
 }
 .niken .img img {
   width: 1200;
-  
 }
