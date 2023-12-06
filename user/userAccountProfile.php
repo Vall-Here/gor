@@ -20,6 +20,7 @@ if(isset($_POST['update'])){
 
     $sql = "UPDATE users SET password=$password WHERE id='$id'";
     $result = (mysqli_query($conn, $sql));
+    echo "<meta http-equiv='refresh' content='1;url=userAccountProfile.php'>";
 }
 if(isset($_POST['delete']))
 {
@@ -27,6 +28,7 @@ if(isset($_POST['delete']))
 
     $sql = "DELETE FROM users WHERE id='$id'";
     $result = (mysqli_query($conn, $sql));
+    header('Location: ../login.php'); 
 }
 
 ?>

@@ -3,30 +3,33 @@ require_once __DIR__ . '/shafy/logics/config/global.php';
 require_once __DIR__ . '/config/connection.php';
 
 // Pastikan Anda memiliki nilai yang sesuai untuk $id_transaksi, $user_id, dan $field_id
-
 if (!isset($_SESSION['logged_in'])) {
     header('Location: ./login.php');
     exit;
 }
-
 require_once __DIR__ . '/shafy/logics/libs/data.php';
-
 if (!isset($_GET['field_id'])) {
     header('Location: ./fields.php');
     exit;
 }
-
 $field = getField($_GET['field_id']);
-
 if (!$field) {
     header('Location: ./fields.php');
     exit;
 }
-
 $title = 'Payment';
 require_once __DIR__ . '/partials/navbar.php';
 ?>
-
+<style>
+    .payment__item button {
+        height: 50px;
+        width: 100px;
+        border: none;
+        border-radius: 10px;
+        color:#fff;
+        background-color: orangered;
+    }
+</style>
 <main class="container payment">
     <div class="payment__left" data-animated>
         <h1>Transaksi Detail</h1>
@@ -78,8 +81,7 @@ require_once __DIR__ . '/partials/navbar.php';
                         <select name="lapangan[]" id="lapangan-${i}" required>
                             <?php
                             $sqlField = mysqli_query($conn, "SELECT * FROM fields");
-                            foreach ($sqlField as $row_sqlfield) :
-                            ?>
+                            foreach ($sqlField as $row_sqlfield) : ?>
                                 <option value="<?= $row_sqlfield['id'] ?>"><?= $row_sqlfield['name'] ?></option>
                             <?php endforeach; ?>
                         </select>
