@@ -17,6 +17,8 @@ if (!$field) {
     header('Location: ./fields.php');
     exit;
 }
+$trans = mysqli_query($conn,"SELECT * FROM transaksi ORDER BY id_transaksi DESC LIMIT 1");
+$tr = mysqli_fetch_assoc($trans);
 $title = 'Payment';
 require_once __DIR__ . '/partials/navbar.php';
 ?>
@@ -37,7 +39,8 @@ require_once __DIR__ . '/partials/navbar.php';
         <div class="payment__card" data-animated>
             <img alt="Phone" src="./shafy/img/icons/phone.png" class="payment__card-img">
             <div class="payment__card-inner">
-                <p class="payment__card-title">TOTAL BAYAR : Rp <?= number_format($field['price'], 0, ',', '.') ?></p>
+                <!-- <p class="payment__card-title">TOTAL BAYAR : Rp <?= number_format($field['price'], 0, ',', '.') ?></p> -->
+                <p class="payment__card-title">Pembayaran : <?=$tr['pembayaran'] ?></p>
             </div>
         </div>
     </div>
