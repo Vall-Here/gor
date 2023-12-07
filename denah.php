@@ -17,6 +17,9 @@ require_once __DIR__ . '/partials/navbar.php';
 
 <!-- content -->
 <!-- remove br tags before fill the content -->
+<div class="h1" data-animated>
+    <h1>DENAH LAPANGAN</h1>
+</div>
 <div class="content" data-animated>
     <img src="ikbar/img/denah_lapangan.jpg" alt="" id="denah" usemap="#map">
         <map name="map" id="map">
