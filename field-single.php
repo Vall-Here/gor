@@ -123,7 +123,7 @@ while($order = mysqli_fetch_array($select_orders)){
                 ?>
                 <div class="atas-status2"> 
                     <form action="" method="post">
-                        <input type="date" name="dates" id="dates" value="<?=  date("Y-m-d"); ?>" onchange="this.form.submit();">
+                        <input type="date" name="dates" id="dates" value="<?=  $tanggalSewa; ?>" onchange="this.form.submit();">
                     </form>
                 </div>
                 <div class="atas-status">
