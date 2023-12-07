@@ -64,7 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     mysqli_query($conn, $updateTotalQuery);
 
     echo '<script>alert("Anda Berhasil Melakukan Sewa, Silahkan Cek Profil anda untuk data lebih lanjut!");
-        document.location.href = "fields.php";
+        document.location.href = "invoice.php?id=' . $id_transaksi .'";
     </script>';
 } else {
     echo '<script>alert("Terjadi Kesalahan!");</script>';

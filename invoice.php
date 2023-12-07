@@ -3,9 +3,11 @@ require_once __DIR__ . '/partials/navbar.php';
 require 'function.php';
 $id = $_GET['id'];
 $query1 = "SELECT * FROM orders INNER JOIN users ON orders.user_id = users.id INNER JOIN fields ON field_id = fields.id WHERE id_transaksi = $id";
-$query = "SELECT * FROM transaksi INNER JOIN users ON orders.user_id = users.id INNER JOIN fields ON field_id = fields.id";
+$query = "SELECT * FROM transaksi WHERE id_transaksi = $id";
 $result = mysqli_query($conn, $query1);
 $row = mysqli_fetch_assoc($result);
+$result2 = mysqli_query($conn, $query);
+$row2 = mysqli_fetch_assoc($result2);
 ?>
 
 <!DOCTYPE html>
@@ -31,11 +33,12 @@ $row = mysqli_fetch_assoc($result);
                 </div>
                 <div class="i_row">
                     <div class="i_number">
-                        <p class="p_title">INVOICE NO : 3452324</p>
+                        <?php $invoice = generateInvoiceCode(); ?>
+                        <p class="p_title"><?= "INVOICE NO : $invoice"?></p>
                     </div>
                     <div class="i_address text_right">
                         <!-- <p>TO</p> -->
-                        <p class="p_title">Date : 09-09-1909</p>
+                        <p class="p_title">Date : <?= $row2['tanggal'] ?></p>
                     </div>
                 </div>
             </div>
@@ -60,7 +63,8 @@ $row = mysqli_fetch_assoc($result);
                     <div class="i_table_body">
 
                         <?php
-                        $total_qty = 0; // Variabel untuk menyimpan jumlah ID transaksi
+                        $total_qty = 0;
+                        mysqli_data_seek($result, 0);
                         while ($row = mysqli_fetch_array($result)) {
                             $total_qty++; ?>
                             <div class="i_row">
@@ -80,6 +84,10 @@ $row = mysqli_fetch_assoc($result);
                         <?php } ?>
                     </div>
                     <div class="i_table_foot">
+                        <?php
+                        mysqli_data_seek($result2, 0);
+                        while ($row2 = mysqli_fetch_array($result2)) {
+                        ?>
                         <div class="i_row">
                             <div class="i_col w_15">
                                 <p></p>
@@ -92,7 +100,7 @@ $row = mysqli_fetch_assoc($result);
                                 <p>Tax 10%</p>
                             </div>
                             <div class="i_col w_15">
-                                <p>$150.00</p>
+                                <p>$<?= $row2['total'] ?></p>
                                 <p>$15.00</p>
                             </div>
                         </div>
@@ -101,10 +109,11 @@ $row = mysqli_fetch_assoc($result);
                             <div class="i_col w_50 grand_total">
                                 <p>
                                     <span>GRAND TOTAL:</span>
-                                    <span>$165.00</span>
+                                    <span>$<?= $row2['total']?></span>
                                 </p>
                             </div>
                         </div>
+                        <?php } ?>
                     </div>
                 </div>
             </div>

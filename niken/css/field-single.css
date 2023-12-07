@@ -289,7 +289,7 @@
 .atas .atas-status2 input[type="date"] {
   width: 150px;
   height: 40px;
-  border-radius: 20px;
+  border-radius: 10px;
 }
 area {
   cursor: pointer;

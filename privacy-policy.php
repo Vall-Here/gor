@@ -12,7 +12,7 @@ require_once __DIR__ . '/partials/navbar.php';
 <div class="head">
     <h1>Privacy Police</h1>
 </div>
-<div class="text_page">
+<div class="text_page" data-animated>
     <p>
         At SportEase, accessible from https://sportease.com, one of our
         main priorities is the privacy of our visitors. This Privacy

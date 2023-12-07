@@ -103,13 +103,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <img src="ikbar/img/gor.jpg" alt="">
 
             
-            <form action="" method="post">
+            <!-- <form action="login_admin.php" method="post"> -->
             
                 <div class="submit2">
                 <h1>Login As Admin</h1></h1>
                     <button class="submit-button"><a href="login_admin.php">Go</a></button>
                 </div>
-            </form>
+            <!-- </form> -->
         </div>
     
     </div>
