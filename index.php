@@ -154,7 +154,7 @@ $rows_user = mysqli_fetch_assoc($user);
           <p class="how__description">Lorem ipsum dolor sit amet consectetur adipiscing elit odio massa ege.</p>
         </div>
         <div class="how__item"><img alt="Step 1" src="./shafy/img/how/how-3.png" class="how__img">
-          <h3 class="how__title">3. Serahkan nota pembayarana Saat datang </h3>
+          <h3 class="how__title">3. Serahkan nota pembayaran Saat datang </h3>
           <p class="how__description">Lorem ipsum dolor sit amet consectetur adipiscing elit odio massa ege.</p>
         </div>
       </div><a href="./fields.php" class="how__button" data-animated>Explore fields</a>

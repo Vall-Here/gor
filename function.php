@@ -54,11 +54,7 @@
 
     function generateInvoiceCode() {
         $randomNumber = str_pad(mt_rand(1, 99999999), 8, '0', STR_PAD_LEFT);
-    
-        // Hash the random number
         $invoiceCode = hash('sha256', $randomNumber);
-    
-        // Take only the first 8 characters of the hash
         $shortInvoiceCode = substr($invoiceCode, 0, 8);
     
         return $shortInvoiceCode;
