@@ -97,8 +97,26 @@ if (isset($_POST['submit'])){
             alert("Please fill in all fields.");
             return false;
         }
-        alert("Data No errors.");
+        if (password !== cpassword) {
+            alert("Password and Confirm Password do not match.");
+            return false;
+        }
+        
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            alert("Invalid email format.");
+            return false;
+        }
+
+        var phoneRegex = /^[0-9]{10,}$/;
+        if (!phoneRegex.test(nohp)) {
+            alert("Invalid phone number format.");
+            return false;
+        }
+
+        alert("Data has no errors.");
         return true;
+    
     }
 </script>
 
