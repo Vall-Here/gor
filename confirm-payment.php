@@ -69,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </script>';
     } else {
         echo '<script>alert("Anda Berhasil Melakukan Sewa, Silahkan Upload Bukti Pembayaran!");
-            document.location.href = "buktiBayar?id=' . $id_transaksi . '";
+            document.location.href = "buktiBayar.php?id=' . $id_transaksi . '";
         </script>';
     }
 } else {

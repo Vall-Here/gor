@@ -21,7 +21,7 @@ $resultTrans = mysqli_query($conn, $queryTrans);
 if ($resultTrans) {
     $row_trans = mysqli_fetch_assoc($resultTrans);
     // $id_transaksi = $row['id_transaksi'] ;
-    $id_transaksi = 21 ;
+    $id_transaksi = $_GET['id'] ;
 } else {
     echo "Error: " . mysqli_error($conn);
     exit;
