@@ -17,13 +17,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $user_id = $row_user['id']; 
 
 
-    // Ambil ID transaksi terbaru dari tabel transaksi
-    $query = "SELECT id_transaksi FROM transaksi ORDER BY id_transaksi DESC LIMIT 1";
+    $query = "SELECT id_transaksi,pembayaran FROM transaksi ORDER BY id_transaksi DESC LIMIT 1";
     $result = mysqli_query($conn, $query);
 
     if ($result) {
         $row = mysqli_fetch_assoc($result);
         $id_transaksi = $row['id_transaksi'] ;
+        $pembayaran = $row['pembayaran'] ;
     } else {
         // Penanganan kesalahan jika query tidak berhasil
         echo "Error: " . mysqli_error($conn);
@@ -63,9 +63,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $updateTotalQuery = "UPDATE transaksi SET total = (SELECT SUM(price) FROM orders WHERE id_transaksi = $id_transaksi) WHERE id_transaksi = $id_transaksi";
     mysqli_query($conn, $updateTotalQuery);
 
-    echo '<script>alert("Anda Berhasil Melakukan Sewa, Silahkan Cek Profil anda untuk data lebih lanjut!");
-        document.location.href = "invoice.php?id=' . $id_transaksi .'";
-    </script>';
+    if ($pembayaran === 'cash') {
+        echo '<script>alert("Anda Berhasil Melakukan Sewa, Silahkan Cek Profil anda untuk data lebih lanjut!");
+            document.location.href = "invoice.php?id=' . $id_transaksi . '";
+        </script>';
+    } else {
+        echo '<script>alert("Anda Berhasil Melakukan Sewa, Silahkan Upload Bukti Pembayaran!");
+            document.location.href = "buktiBayar?id=' . $id_transaksi . '";
+        </script>';
+    }
 } else {
     echo '<script>alert("Terjadi Kesalahan!");</script>';
 }
