@@ -1,3 +1,4 @@
+
 <?php
 $title = 'Rent Management';
 require_once __DIR__ . '/navbar_admin.php';
@@ -43,11 +44,18 @@ $current_page1 = isset($_GET['pages']) ? $_GET['pages'] : 1;
 $start_index1= ($current_page1 - 1) * $results_per_page2;
 
 
-$transaksi = "SELECT * FROM transaksi LIMIT $start_index1, $results_per_page2";
+$transaksi = "SELECT * FROM transaksi ORDER BY transaksi.id_transaksi DESC LIMIT $start_index1, $results_per_page2";
 $result2 = $conn->query($transaksi);
 
 ?>
+<script>
 
+function tampilkanPopup() {
+    document.getElementById('popupContainer').style.display = 'block';
+
+    document.getElementById('gambarPopup').src = 'data:image/jpeg;base64,' + '<?php echo base64_encode($blobData); ?>';
+}
+</script>
 <link rel="stylesheet" href="./css/style.css" />
 <style>
     .containerMainRent table {
@@ -128,8 +136,9 @@ $result2 = $conn->query($transaksi);
 </style>
 
 <!-- navbar end -->
-<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+
+
 <div class="container hero" data-animated style="margin-inline:300px 0;
     max-width:1750px
     ">
@@ -145,6 +154,7 @@ $result2 = $conn->query($transaksi);
                 <input type="date" name="endDate" id="endDate" value="<?= $end_date ?>" onchange="this.form.submit()">
             </form>
         </div>
+     
         <div class="containerMainRent" style="flex-direction: column; align-items:center">
 
             <table>
@@ -249,7 +259,15 @@ $result2 = $conn->query($transaksi);
                             <td> <?= $row_transaksi["waktu"] ?></td>
                             <td> <?= $row_transaksi["total"] ?></td>
                             <td> <?= $row_transaksi["pembayaran"] ?></td>
-                            <td> <?= $row_transaksi["bukti"] ?></td>
+                            <td>
+                                <?php $blobData = $row_transaksi['bukti']?>
+                                <a href='data:image/jpeg;base64,<?php echo base64_encode($blobData); ?>' download='gambar_download.jpg'>Download Disini</a>
+                                <!-- <a href="javascript:void(0);" onclick="tampilkanPopup()">Tampilkan Gambar</a> -->
+                                <!-- <button style="background-color: orangered;" onclick="tampilkanPopup()"> -->
+                                <div id="popupContainer" style="display: none;">
+                                    <img id="gambarPopup" src="" alt="Popup Gambar">
+                                </div>
+                            </td>
                             <?php 
                             $id_user2 = $row_transaksi["id_user"];
                             $transss = "SELECT * FROM users WHERE id  = $id_user2";
@@ -259,7 +277,7 @@ $result2 = $conn->query($transaksi);
 
                             <td> <?= $rows_users['username']?></td>
                             <td> Admin</td>
-                            <td><button style="background-color: orangered;"><a href="crud_rent/acc_rent.php?id=<?= $row_transaksi["id_transaksi"] ?>" onclick="return confirm('Anda yakin  ?')"> <ion-icon name="trash-outline"></ion-icon></a></button></td>
+                            <td><button style="background-color: orangered;"><a href="?id=<?= $row_transaksi["id_transaksi"] ?>" onclick="return confirm('Anda yakin  ?')"> <ion-icon name="trash-outline"></ion-icon></a></button></td>
                         </tr>
                     <?php }; ?>
                 <?php } else {

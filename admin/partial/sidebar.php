@@ -42,8 +42,8 @@
                     </li>
                     <li class="sidebar__menu-item"><a class="sidebar__menu-link sidebar__menu-link_collapse" href="javascript:void(0)"><img alt="Dashboard" src="../shafy/img/icons/flame-black.png"> Report <img alt="See" src="../shafy/img/icons/chevron-right-black.png"></a>
                         <ul class="sidebar__menu-list">
-                            <li class="sidebar__menu-item"><a class="sidebar__menu-link" href="../../gor/admin/adminStatisticRent.php">Statistic Bulanan</a></li>
-                            <li class="sidebar__menu-item"><a class="sidebar__menu-link" href="./transactions-history.php">Data User</a></li>
+                            <li class="sidebar__menu-item"><a class="sidebar__menu-link" href="../../gor/admin/adminStatisticRent.php">Statistic </a></li>
+                            <!-- <li class="sidebar__menu-item"><a class="sidebar__menu-link" href="./transactions-history.php">Data User</a></li> -->
                         </ul>
                     </li>
                     <li class="sidebar__menu-item"><a class="sidebar__menu-link sidebar__menu-link_collapse" href="javascript:void(0)"><img alt="Dashboard" src="../shafy/img/icons/flame-black.png"> Faq Management<img alt="See" src="../shafy/img/icons/chevron-right-black.png"></a>
