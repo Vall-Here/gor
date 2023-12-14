@@ -203,7 +203,7 @@ function tampilkanPopup() {
                                 </button>
                             </td>
                             <td><button style="background-color: #4CAF50;"><a href="crud_rent/acc_rent.php?id=<?= $row_orders["id"] ?>" onclick="return confirm('Anda yakin  ?')"> Acc</a></button></td>
-                            <td><button style="background-color: #4CAF50;"><a href="pdfgenerator/create_pdf.php?id=<?= $row_orders["id"] ?>" target="_blank" onclick="return confirm('Anda yakin  ?')"><ion-icon name="print-outline"></ion-icon></a></button></td>
+                            <td><button style="background-color: #4CAF50;"><a href="pdfgenerator/create_pdf.php?id=<?= $row_orders["id"] ?>" target="_blank" onclick="return confirm('Print Laporan ?')"><ion-icon name="print-outline"></ion-icon></a></button></td>
                             
                         </tr>
                     <?php }; ?>
@@ -262,8 +262,12 @@ function tampilkanPopup() {
                             <td> <?= $row_transaksi["total"] ?></td>
                             <td> <?= $row_transaksi["pembayaran"] ?></td>
                             <td>
-                                <?php $blobData = $row_transaksi['bukti']?>
-                                <a href='data:image/jpeg;base64,<?php echo base64_encode($blobData); ?>' download='gambar_download.jpg'>Download Disini</a>
+                            <?php
+                                $blobData = $row_transaksi['bukti'];
+                                ?>
+                                <a href='data:image/jpeg;base64,<?php echo base64_encode($blobData); ?>' download='gambar_download.jpg'>
+                                    <?php echo $blobData ? 'Download disini' : 'Tidak ada data'; ?>
+                                </a>
                                 <!-- <a href="javascript:void(0);" onclick="tampilkanPopup()">Tampilkan Gambar</a> -->
                                 <!-- <button style="background-color: orangered;" onclick="tampilkanPopup()"> -->
                                 <div id="popupContainer" style="display: none;">

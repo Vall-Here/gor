@@ -2,23 +2,14 @@
 require('fpdf.php');
 require "../../config/connection.php";
 
-
 class PDF extends FPDF
 {
     function Header()
     {
         // Sesuaikan dengan header PDF Anda
-        $this->SetFont('Arial', 'B', 12);
-        $this->Cell(40, 10, 'ID Order', 1);
-        $this->Cell(40, 10, 'ID Transaksi', 1);
-        $this->Cell(40, 10, 'Pelanggan', 1);
-        $this->Cell(40, 10, 'Nama Lapangan', 1);
-        $this->Cell(40, 10, 'Price', 1);
-        $this->Cell(40, 10, 'tanggal Sewa', 1);
-        $this->Cell(40, 10, 'waktu Sewa', 1);
-        $this->Cell(40, 10, 'token', 1);
-        $this->Cell(40, 10, 'admin status', 1);
-        // ... tambahkan sel lainnya sesuai dengan kebutuhan
+        $this->SetFont('Arial', 'B', 22);
+        $this->Cell(120, 10, 'PENYEWAAN', 1);
+
     }
 
     function Footer()
@@ -31,7 +22,7 @@ class PDF extends FPDF
 }
 
 $pdf = new PDF();
-$pdf->AddPage('L');
+$pdf->AddPage();
 
 $id = $_GET['id'];
 $result = mysqli_query($conn, "SELECT * FROM orders WHERE id = $id");
@@ -52,18 +43,35 @@ if ($result) {
 
     $pdf->SetFont('Arial', '', 12);
     $pdf->Ln(); // Pindah ke baris berikutnya
+    $pdf->Cell(40, 10, 'ID ORDERS', 1);
+    $pdf->Cell(40, 10, 'ID TRANSAKSI', 1);
+    $pdf->Cell(40, 10, 'PELANGGAN', 1);
+    $pdf->Ln();
     $pdf->Cell(40, 10, $row_orders["id"], 1);
     $pdf->Cell(40, 10, $row_orders["id_transaksi"], 1);
     $pdf->Cell(40, 10, $row_user["username"], 1);
+    $pdf->Ln();
+    $pdf->Cell(40, 10, 'LAPANGAN', 1);
+    $pdf->Cell(40, 10, 'TANGGAL SEWA', 1);
+    $pdf->Cell(40, 10, 'WAKTU SEWA', 1);
+    $pdf->Ln();
     $pdf->Cell(40, 10, $row_field["name"], 1);
-    $pdf->Cell(40, 10, $row_orders["price"], 1);
     $pdf->Cell(40, 10, $row_orders["tanggal_sewa"], 1);
     $pdf->Cell(40, 10, $row_orders["waktu_sewa"], 1);
-    $pdf->Cell(40, 10, $row_orders["token"], 1);
-    $pdf->Cell(40, 10, $row_orders["admin_status"], 1);
-    // ... tambahkan sel lainnya sesuai dengan kebutuhan
+    $pdf->Ln();
+    $pdf->Cell(80, 10, 'HARGA', 1); // Sel kosong untuk Price
+    $pdf->Cell(40, 10, $row_orders["price"], 1);
+    $pdf->Ln();
+    $pdf->Cell(120, 10, 'TOKEN', 1);
+    $pdf->Ln();
+    $pdf->MultiCell(120, 10, $row_orders["token"], 1);
+    $pdf->Ln();
+    $pdf->Cell(80, 10, 'ADMIN', 1); // Sel kosong untuk Admin Status
+    $pdf->Cell(40, 10, '', 1);
+    $pdf->Ln(); // Pindah ke baris berikutnya
 
-    $pdf->Output('output'.$id.'.pdf', 'D'); // Output ke browser sebagai download
+    $pdf->Output('output' . $id . '.pdf', 'D'); // Output ke browser sebagai download
 } else {
     echo "Query tidak berhasil dieksekusi.";
 }
+?>
