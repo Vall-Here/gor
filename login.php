@@ -64,6 +64,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             header("Location: admin/beranda.php");
             exit;
+        }else {
+            echo '<script>alert("Email tidak ada!");</script>';
         }
 
     }
