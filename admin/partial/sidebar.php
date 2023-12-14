@@ -18,7 +18,7 @@
 
     <body class="body_light">
         <div class="sidebar">
-            <div class="sidebar__header"><a class="sidebar__brand" href="./dashboard.php"><img alt="SportEase" src="../shafy/img/sportease.png"></a><button class="sidebar__toggler"><img alt="Menu" src="../shafy/img/icons/menu.png"></button></div>
+            <div class="sidebar__header"><a class="sidebar__brand" href="../index_admin.php"><img alt="SportEase" src="../shafy/img/sportease.png"></a><button class="sidebar__toggler"><img alt="Menu" src="../shafy/img/icons/menu.png"></button></div>
             <nav class="sidebar__body">
                 <ul class="sidebar__menu-list">
                     <li class="sidebar__menu-item"><a class="sidebar__menu-link" href="../../gor/admin/index_admin.php"><img alt="Dashboard" src="../shafy/img/icons/home-black.png"> Dashboard</a></li>

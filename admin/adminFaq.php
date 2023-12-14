@@ -41,7 +41,7 @@ $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
 $start_index = ($current_page - 1) * $results_per_page;
 
 
-$faq = "SELECT * FROM faq INNER JOIN admin ON faq.id_adm = admin.id_admin WHERE 1 $date_condition LIMIT $start_index, $results_per_page";
+$faq = "SELECT * FROM faq INNER JOIN admin ON faq.id_adm = admin.id_admin WHERE 1 $date_condition ORDER BY faq.id_faq DESC LIMIT $start_index, $results_per_page";
 $result = $conn->query($faq);
 
 ?>

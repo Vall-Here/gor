@@ -168,7 +168,7 @@ function tampilkanPopup() {
                     <th>Waktu</th>
                     <th>Token</th>
                     <th>Admin Status</th>
-                    <th colspan="2">Operations</th>
+                    <th colspan="3">Operations</th>
                 </tr>
                 <?php
                 if ($result->num_rows > 0) {
@@ -203,6 +203,8 @@ function tampilkanPopup() {
                                 </button>
                             </td>
                             <td><button style="background-color: #4CAF50;"><a href="crud_rent/acc_rent.php?id=<?= $row_orders["id"] ?>" onclick="return confirm('Anda yakin  ?')"> Acc</a></button></td>
+                            <td><button style="background-color: #4CAF50;"><a href="pdfgenerator/create_pdf.php?id=<?= $row_orders["id"] ?>" target="_blank" onclick="return confirm('Anda yakin  ?')"><ion-icon name="print-outline"></ion-icon></a></button></td>
+                            
                         </tr>
                     <?php }; ?>
                 <?php } else {
