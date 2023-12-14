@@ -29,7 +29,7 @@ if (isset($_POST['submit'])){
     $today = date("Y-m-d"); 
     $waktuTrans = $_POST['waktu'];
     $pembayaran = $_POST['bayar'];
-    $result = mysqli_query ($conn, "INSERT INTO transaksi VALUES (null,'$today','$waktuTrans',0,'$pembayaran',$id_user,2)");
+    $result = mysqli_query ($conn, "INSERT INTO transaksi VALUES (null,'$today','$waktuTrans',0,'$pembayaran',null,$id_user,2)");
     $field_id = $field['id'];
     echo "
     <script>
@@ -41,9 +41,6 @@ if (isset($_POST['submit'])){
 }
 
 ?>
-
-
-
 
 
 <main class="container payment">

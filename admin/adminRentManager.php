@@ -21,18 +21,30 @@ $end_date = isset($_GET['endDate']) ? $_GET['endDate'] : $end_date_default;
 $date_condition = " AND tanggal_sewa BETWEEN '$start_date' AND '$end_date'";
 
 $search = isset($_GET['search']) ? $_GET['search'] : '';
-$search_condition = !empty($search) ? " AND (tanggal_sewa LIKE '%$search%' OR admin_status LIKE '%$search%' OR price LIKE '%$search%' OR waktu_sewa LIKE '%$search%' OR token LIKE '%$search%')" : '';
+$search_condition = !empty($search) ? " AND (tanggal_sewa LIKE '%$search%' OR admin_status LIKE '%$search%' OR price LIKE '%$search%' OR waktu_sewa LIKE '%$search%' OR token LIKE '%$search%' OR id_transaksi LIKE '%$search%')" : '';
 
 $results_per_page = isset($_GET['rowsPerPage']) ? (int)$_GET['rowsPerPage'] : 10;
-$result_count = mysqli_query($conn, "SELECT COUNT(*) as total FROM orders INNER JOIN users ON orders.user_id = users.id WHERE 1 $search_condition $date_condition");
+$result_count = mysqli_query($conn, "SELECT COUNT(*) as total FROM orders WHERE 1 $search_condition $date_condition");
 $row_count = mysqli_fetch_assoc($result_count);
 $total_pages = ceil($row_count['total'] / $results_per_page);
 $current_page = isset($_GET['page']) ? $_GET['page'] : 1; 
 $start_index = ($current_page - 1) * $results_per_page;
 
+$start_index = min($start_index, $row_count['total']);
 
-$orders = "SELECT * FROM orders WHERE 1 $search_condition $date_condition LIMIT $start_index, $results_per_page";
+$orders = "SELECT * FROM orders WHERE 1 $search_condition $date_condition ORDER BY orders.id DESC LIMIT $start_index, $results_per_page";
 $result = $conn->query($orders);
+
+$results_per_page2 =10;
+$result_count2 = mysqli_query($conn, "SELECT COUNT(*) as total2 FROM transaksi");
+$row_count2 = mysqli_fetch_assoc($result_count2);
+$total_pages2 = ceil($row_count2['total2'] / $results_per_page2);
+$current_page1 = isset($_GET['pages']) ? $_GET['pages'] : 1; 
+$start_index1= ($current_page1 - 1) * $results_per_page2;
+
+
+$transaksi = "SELECT * FROM transaksi LIMIT $start_index1, $results_per_page2";
+$result2 = $conn->query($transaksi);
 
 ?>
 
@@ -116,7 +128,8 @@ $result = $conn->query($orders);
 </style>
 
 <!-- navbar end -->
-
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 <div class="container hero" data-animated style="margin-inline:300px 0;
     max-width:1750px
     ">
@@ -137,6 +150,7 @@ $result = $conn->query($orders);
             <table>
                 <tr>
                     <th>ID Order</th>
+                    <th>ID Transaksi</th>
                     <th>Nama</th>
                     <th>Field</th>
                     <th>Harga</th>
@@ -151,6 +165,7 @@ $result = $conn->query($orders);
                     foreach ($result as $row_orders) { ?>
                         <tr>
                             <td> <?= $row_orders["id"] ?> </td>
+                            <td> <?= $row_orders["id_transaksi"] ?> </td>
                             <?php
                             $id_user = $row_orders["user_id"];
                             $orders = "SELECT * FROM users WHERE id  = $id_user";
@@ -173,7 +188,7 @@ $result = $conn->query($orders);
                             <td> <?= $row_orders["token"] ?></td>
                             <td> <?= $row_orders["admin_status"] ?></td>
                             <td><button>
-                                    <a href="crud_rent/hapus_rent.php?id=<?= $row_orders['id'] ?>" onclick="return confirm('Anda yakin ingin menghapus ?')">Hapus
+                                    <a href="crud_rent/hapus_rent.php?id=<?= $row_orders['id'] ?>" onclick="return confirm('Anda yakin ingin menghapus ?')"><ion-icon name="trash-outline"></ion-icon>
                                     </a>
                                 </button>
                             </td>
@@ -198,7 +213,74 @@ $result = $conn->query($orders);
             <?php if ($current_page < $total_pages) : ?>
                 <a href="?page=<?= $current_page + 1 ?>&search=<?= $search ?>&rowsPerPage=<?= $results_per_page ?>&startDate=<?= $start_date ?>&endDate=<?= $end_date ?>">Next &raquo;</a>
             <?php endif; ?>
+
+            <?php if ($total_pages > 10 && $current_page < $total_pages - 9) : ?>
+                <!-- Tambahkan link ke halaman terakhir -->
+                <a href="?page=<?= $total_pages ?>&search=<?= $search ?>&rowsPerPage=<?= $results_per_page ?>&startDate=<?= $start_date ?>&endDate=<?= $end_date ?>"><?= $total_pages ?></a>
+            <?php endif; ?>
         </div>
+
+    
+        </div>
+
+
+        <div class="containerMainRent" style="flex-direction: column; align-items:center">
+            <h1>Bukti Pembayaran</h1>
+        <table>
+                <tr>
+                    <th>ID Transaksi</th>
+                    <th>tanggal</th>
+                    <th>Waktu</th>
+                    <th>Total Harga</th>
+                    <th>Pembayaran</th>
+                    <th>Bukti</th>
+                    <th>User</th>
+                    <th>Admin</th>
+                    <th>Operations</th>
+                </tr>
+                <?php
+                if ($result2->num_rows > 0) {
+                    foreach ($result2 as $row_transaksi) { ?>
+                        <tr>
+                            <td> <?= $row_transaksi["id_transaksi"] ?> </td>
+
+                            
+                            <td> <?= $row_transaksi["tanggal"] ?> </td>
+                            <td> <?= $row_transaksi["waktu"] ?></td>
+                            <td> <?= $row_transaksi["total"] ?></td>
+                            <td> <?= $row_transaksi["pembayaran"] ?></td>
+                            <td> <?= $row_transaksi["bukti"] ?></td>
+                            <?php 
+                            $id_user2 = $row_transaksi["id_user"];
+                            $transss = "SELECT * FROM users WHERE id  = $id_user2";
+                            $resultt = $conn->query($transss);
+                            $rows_users = mysqli_fetch_assoc($resultt);
+                            ?>
+
+                            <td> <?= $rows_users['username']?></td>
+                            <td> Admin</td>
+                            <td><button style="background-color: orangered;"><a href="crud_rent/acc_rent.php?id=<?= $row_transaksi["id_transaksi"] ?>" onclick="return confirm('Anda yakin  ?')"> <ion-icon name="trash-outline"></ion-icon></a></button></td>
+                        </tr>
+                    <?php }; ?>
+                <?php } else {
+                    echo "Tidak ada data supplier.";
+                }
+                ?>
+            </table>
+        
+            <div class="pagination">
+            <?php if ($current_page1 > 1) : ?>
+                <a href="?pages=<?= $current_page1 - 1 ?>">&laquo; Previous</a>
+            <?php endif; ?>
+
+            <?php for ($page = 1; $page <= $total_pages2; $page++) : ?>
+                <a href="?pages=<?= $page ?>" <?= $page == $current_page1 ? 'class="active"' : '' ?>><?= $page ?></a>
+            <?php endfor; ?>
+
+            <?php if ($current_page1 < $total_pages2) : ?>
+                <a href="?pages=<?= $current_page1 + 1 ?>">Next &raquo;</a>
+            <?php endif; ?>
+            </div>
     
         </div>
     </section>

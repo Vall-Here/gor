@@ -20,7 +20,9 @@ $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
 $offset = ($current_page - 1) * $items_per_page;
 $paginated_orders = mysqli_query($conn, "SELECT * FROM orders 
                         INNER JOIN fields ON orders.field_id = fields.id
-                        WHERE user_id = '$id' LIMIT $items_per_page OFFSET $offset");
+                        WHERE user_id = '$id'
+                        ORDER BY orders.id DESC 
+                        LIMIT $items_per_page OFFSET $offset");
 
 $total_pages = ceil(mysqli_num_rows($orders) / $items_per_page);
 $orders2 = mysqli_query($conn, "SELECT * FROM orders where user_id = '$id'");
@@ -28,6 +30,7 @@ $rows_order2= mysqli_fetch_assoc($orders2);
 // echo $rows_order2['id'];
 // $field = mysqli_query($conn, "SELECT * FROM fields ");
 // $row_field = mysqli_fetch_assoc($field);
+
 
 ?>
 <style>
@@ -74,13 +77,16 @@ $rows_order2= mysqli_fetch_assoc($orders2);
     <div class="semua">
         <div id="" class="RentCointainer">
             <?php 
-            $counter = ($current_page - 1) * $items_per_page;
+            
+            $counter = mysqli_query($conn,"SELECT COUNT(*) as countt FROM orders WHERE orders.user_id = $id");
+            $counterResult = mysqli_fetch_assoc($counter);
+            $counterResult['countt'] = $counterResult['countt'] * $items_per_page;
             foreach ($paginated_orders as $row_orders):
                 ?>
             <div class=cardBox >
                 <div class="cardAtas">
                     <div>
-                        <span class="huruf">Rent <?php echo $counter = $counter+1?></span>
+                        <!-- <span class="huruf">Rent <?php echo $counterResult['countt'] = $counterResult['countt'] - 1?></span> -->
                     </div>
                     <hr style="width: 95%; display: flex; margin: 2% 0 1% 1%; color: black; background-color: black;">
                 </div>

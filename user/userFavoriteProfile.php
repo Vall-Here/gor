@@ -11,6 +11,11 @@ $id = $_SESSION['id'];
 $user = mysqli_query($conn, "SELECT * FROM users WHERE id = '$id'");
 $rows_user = mysqli_fetch_assoc($user);
 
+if(isset($_SESSION['logged_in'])){
+    $hasill = mysqli_query($conn,"SELECT * FROM fav WHERE id_user =". $_SESSION['id']); 
+    $hasil2 = mysqli_fetch_assoc($hasill);
+}
+?>
 
 ?>
 
@@ -34,11 +39,21 @@ $rows_user = mysqli_fetch_assoc($user);
             ?>
             <?php
             while ($row = mysqli_fetch_assoc($query)) {?>
-            <a href="">
+            <a href="../field-single.php?id=<?=$row['id_fields']?>">
                     <div class="cardBoxF"> 
                         <img class="lap" src="data:image/jpeg;base64,<?php echo base64_encode($row['photo']); ?>" alt=""> 
                         <div class="fav">
-                            <img  src="../rere/img/favorite.png" alt="">
+                            <!-- <img  src="../rere/img/favorite.png" alt=""> -->
+                            <button class="fields__card-favorite" style="left: 5px;top:5px">
+                                <?php if (isset($_SESSION['logged_in'])): ?>
+                                    <?php $favoriteFieldIds = array_column($hasil2, 'id_fields'); ?>
+                                    <?php $favoriteUserIds = array_column($hasil2, 'id_users'); ?>
+                                        <img src="../niken/img/heart-solid-primary.png" alt="Favorite" />
+     
+                                <?php else: ?>
+                                    <img src="./niken/img/heart-black.png" alt="Favorite" />
+                                <?php endif; ?>
+                            </button>
                         </div>
                         <div class="cardLink">
                             <span><?php echo $row['name']; ?></span>
