@@ -1,15 +1,16 @@
 <?php
 require_once __DIR__ . '/partials/navbar.php';
 require 'function.php';
-$id = $_GET['id'];
+$fields = $_GET['id'];
 $user = $_SESSION['id'];
-$query1 = "SELECT * FROM orders INNER JOIN users ON orders.user_id = users.id INNER JOIN fields ON field_id = fields.id WHERE id_transaksi = $id AND user_id = $user";
-$query = "SELECT * FROM transaksi WHERE id_transaksi = $id AND id_user = $user";
+$query1 = "SELECT * FROM orders 
+           INNER JOIN users ON orders.user_id = users.id 
+           INNER JOIN fields ON orders.field_id = fields.id 
+           WHERE orders.id = $fields AND orders.user_id = $user";
 $result = mysqli_query($conn, $query1);
 $row = mysqli_fetch_assoc($result);
-$result2 = mysqli_query($conn, $query);
-$row2 = mysqli_fetch_assoc($result2);
 ?>
+
 
 <!DOCTYPE html>
 <html>
@@ -35,11 +36,7 @@ $row2 = mysqli_fetch_assoc($result2);
                 <div class="i_row">
                     <div class="i_number">
                         <?php $invoice = generateInvoiceCode(); ?>
-                        <p class="p_title"><?= "INVOICE NO : $invoice"?></p>
-                    </div>
-                    <div class="i_address text_right">
-                        <!-- <p>TO</p> -->
-                        <p class="p_title">Date : <?= $row2['tanggal'] ?></p>
+                        <p class="p_title"><?= "TOKEN : ".$row['token']?></p>
                     </div>
                 </div>
             </div>
@@ -84,38 +81,7 @@ $row2 = mysqli_fetch_assoc($result2);
                             </div>
                         <?php } ?>
                     </div>
-                    <div class="i_table_foot">
-                        <?php
-                        mysqli_data_seek($result2, 0);
-                        while ($row2 = mysqli_fetch_array($result2)) {
-                        ?>
-                        <div class="i_row">
-                            <div class="i_col w_15">
-                                <p></p>
-                            </div>
-                            <div class="i_col w_55">
-                                <p></p>
-                            </div>
-                            <div class="i_col w_15">
-                                <p>Sub Total</p>
-                                <p>Tax 10%</p>
-                            </div>
-                            <div class="i_col w_15">
-                                <p>$<?= $row2['total'] ?></p>
-                                <p>$15.00</p>
-                            </div>
-                        </div>
-                        <div class="i_row grand_total_wrap">
-                            <div class="i_col w_50"></div>
-                            <div class="i_col w_50 grand_total">
-                                <p>
-                                    <span>GRAND TOTAL:</span>
-                                    <span>$<?= $row2['total']?></span>
-                                </p>
-                            </div>
-                        </div>
-                        <?php } ?>
-                    </div>
+                    
                 </div>
             </div>
             <div class="footer">
