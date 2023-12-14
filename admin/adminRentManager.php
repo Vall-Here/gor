@@ -283,7 +283,7 @@ function tampilkanPopup() {
 
                             <td> <?= $rows_users['username']?></td>
                             <td> Admin</td>
-                            <td><button style="background-color: orangered;"><a href="?id=<?= $row_transaksi["id_transaksi"] ?>" onclick="return confirm('Anda yakin  ?')"> <ion-icon name="trash-outline"></ion-icon></a></button></td>
+                            <td><button style="background-color: orangered;"><a href="crud_rent/hapus_transaksi.php?id=<?=$row_transaksi['id_transaksi'] ?>" onclick="return confirm('DATA PADA ORDERS AKAN IKUT TERHAPUS, ANDA YAKIN ?')"> <ion-icon name="trash-outline"></ion-icon></a></button></td>
                         </tr>
                     <?php }; ?>
                 <?php } else {
