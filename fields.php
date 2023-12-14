@@ -54,12 +54,6 @@ if(isset($_SESSION['logged_in'])){
         </div>
     </nav>
     <!-- navbar end -->
-    <script>
-    function gotofavoritepage() {
-        // Ganti "favorite.php" dengan URL halaman favorit yang diinginkan
-        window.location.href = "ikbar/config/config.php";
-    }
-    </script>
 
 
     <div id="content">
