@@ -106,7 +106,7 @@ $rows_order2= mysqli_fetch_assoc($orders2);
                     <div class="CETAK"><button>CETAK</button></div>
                     <div class="Cancel"><button 
                     onclick="return confirm('yakin ingin meng cancel penyewaan?')"
-                    name="delete"><a href="functions/delSewa.php?id=<?=$rows_order2['id']?>">Cancel</a></button></div>
+                    name="delete"><a href="functions/delSewa.php?id=<?=$row_orders['id']?>">Cancel</a></button></div>
                 </div>
                 <hr style=" width: 95%; display: flex; margin: 2% 0 1% 1%; color: black; background-color: black;" align="center"  >
                 <div class="tulisanBawah">
