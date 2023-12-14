@@ -103,7 +103,7 @@ $rows_order2= mysqli_fetch_assoc($orders2);
                     $todayDay = date('Y-m-d');
                     ?>
                     <div class="status">Status: <?php echo ($databaseDate > $todayDay) ? 'Ongoing' : 'Kadaluarsa'; ?></div>
-                    <div class="CETAK"><button><a href="../invoice-2.php?id=<?=$row_orders['id']?>">CETAK</a></button></div>
+                    <div class="CETAK"><button><a style="text-decoration: none; color:#fff;" href="../invoice-2.php?id=<?=$row_orders['fID']?>">CETAK</a></button></div>
                     <div class="Cancel"><button 
                     onclick="return confirm('yakin ingin meng cancel penyewaan?')"
                     name="delete"><a href="functions/delSewa.php?id=<?=$row_orders['id']?>">Cancel</a></button></div>
