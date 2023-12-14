@@ -18,7 +18,7 @@ $orders = mysqli_query($conn, "SELECT * FROM orders
 $items_per_page = 3;
 $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
 $offset = ($current_page - 1) * $items_per_page;
-$paginated_orders = mysqli_query($conn, "SELECT * FROM orders 
+$paginated_orders = mysqli_query($conn, "SELECT *,orders.id as fID FROM orders 
                         INNER JOIN fields ON orders.field_id = fields.id
                         WHERE user_id = '$id'
                         ORDER BY orders.id DESC 

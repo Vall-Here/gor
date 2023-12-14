@@ -22,7 +22,7 @@ class PDF extends FPDF
 }
 
 $pdf = new PDF();
-$pdf->AddPage();
+$pdf->AddPage('A5');
 
 $id = $_GET['id'];
 $result = mysqli_query($conn, "SELECT * FROM orders WHERE id = $id");
