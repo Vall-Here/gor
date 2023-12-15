@@ -27,7 +27,7 @@ $fields = query($query);
                 <div class="fields__card-body">
                     <p class="fields__card-price">Rp. <?= $row_field['price']; ?></p>
                     <h3 class="fields__card-name">
-                        <a href="./field-single.php"><?= $row_field['name']; ?></a>
+                        <a href="./field-single.php?id=<?=$row_field['id']?>"><?= $row_field['name']; ?></a>
                     </h3>
                     <!-- <p class="fields__card-location" >
                         <img src="./niken/img/location-gray.png" alt="Location" />
