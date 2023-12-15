@@ -98,11 +98,9 @@ $row2 = mysqli_fetch_assoc($result2);
                             </div>
                             <div class="i_col w_15">
                                 <p>Sub Total</p>
-                                <p>Tax 10%</p>
                             </div>
                             <div class="i_col w_15">
                                 <p>$<?= $row2['total'] ?></p>
-                                <p>$15.00</p>
                             </div>
                         </div>
                         <div class="i_row grand_total_wrap">
