@@ -169,7 +169,7 @@ $row_field = mysqli_fetch_assoc($field);
         <?php foreach ($result as $row_stat) : ?>
         <tr>
             <td><?=$row_stat['namafield']?></td>
-            <td><?= $row_stat['total']; ?></td>
+            <td><?= number_format($row_stat['total'], 0, ',', '.'); ?></td>
         </tr>
         <?php endforeach; ?>
     </tbody>

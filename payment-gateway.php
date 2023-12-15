@@ -84,8 +84,13 @@ require_once __DIR__ . '/partials/navbar.php';
                         <select name="lapangan[]" id="lapangan-${i}" required>
                             <?php
                             $sqlField = mysqli_query($conn, "SELECT * FROM fields");
-                            foreach ($sqlField as $row_sqlfield) : ?>
-                                <option value="<?= $row_sqlfield['id'] ?>"><?= $row_sqlfield['name'] ?></option>
+                            foreach ($sqlField as $row_sqlfield) : 
+                                if ($row_sqlfield['id'] === $_GET['field_id']) {
+                                ?>
+                                    <option value="<?= $row_sqlfield['id'] ?>"selected><?= $row_sqlfield['name'] ?></option>
+                                <?php } else { ?>
+                                        <option value="<?= $row_sqlfield['id'] ?>" disabled  ><?= $row_sqlfield['name'] ?></option>
+                                    <?php } ?>
                             <?php endforeach; ?>
                         </select>
                     </div>
