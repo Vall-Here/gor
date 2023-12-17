@@ -177,7 +177,7 @@ $rows_user = mysqli_fetch_assoc($user);
   <div class="container join">
     <div class="join__card join__card_partner" data-animated>
       <h2 class="join__title">Join Membership</h2>
-      <p class="join__description">Dapatkan promo dan keuntungan Sebagai membership, Daftar Sekarang !!!.</p><a href="./partner/login.php" class="join__button join__button_primary" data-animated>Join as a
+      <p class="join__description">Dapatkan promo dan keuntungan Sebagai membership, Daftar Sekarang !!!.</p><a href="sub_menu.php" class="join__button join__button_primary" data-animated>Join as a
         Membership</a>
     </div>
     <div class="join__card" data-animated>
